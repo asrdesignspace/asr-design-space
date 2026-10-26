@@ -1,0 +1,406 @@
+/* =========================================================
+   Case study pages (projects/<name>/index.html)
+
+   Shared layout for light, editorial case studies. Each project
+   sets its own brand colours and fonts on the <body> class
+   (e.g. .cs--zay below), so the template can be reused.
+   The ASR header and footer keep the site's own styling.
+   ========================================================= */
+
+/* ---------- Brand fonts (self-hosted, only the weights used) ---------- */
+@font-face {
+  font-family: "Italiana";
+  src: url("../assets/fonts/italiana-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../assets/fonts/lato-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../assets/fonts/lato-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ---------- Zay Couture brand tokens ---------- */
+.cs--zay {
+  --cs-ink: #3a3637;        /* Charcoal */
+  --cs-gold: #d2ad77;       /* Champagne Gold */
+  --cs-beige: #f0e4c9;      /* Light Beige */
+  --cs-ivory: #fffbf0;      /* Ivory */
+  --cs-paper: #ffffff;
+  --cs-display: "Italiana", "Didot", "Bodoni 72", Georgia, serif;
+  --cs-body: "Lato", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Page canvas ---------- */
+.cs main {
+  background: var(--cs-paper);
+  color: var(--cs-ink);
+  font-family: var(--cs-body);
+  overflow: clip;
+}
+
+.cs-container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.cs :focus-visible {
+  outline-color: var(--cs-gold);
+}
+
+/* ---------- 1. Hero ---------- */
+.cs-hero__panel {
+  display: grid;
+  place-items: center;
+  min-height: clamp(260px, 42vw, 520px);
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1.5rem, 6vw, 5rem);
+  /* champagne at the top-left melting into ivory */
+  background: linear-gradient(150deg, var(--cs-gold) 0%, #e2c79c 28%, var(--cs-beige) 58%, var(--cs-ivory) 100%);
+  border-bottom-left-radius: clamp(4rem, 14vw, 12rem); /* the large rounded lower-left corner */
+}
+
+.cs-hero__logo {
+  width: min(100%, 640px);
+  height: auto;
+}
+
+/* logo + project cover side by side (cover = the homepage card image) */
+.cs-hero__panel--split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  max-width: none;
+}
+
+.cs-hero__panel--split .cs-hero__logo {
+  justify-self: center;
+  width: min(100%, 520px);
+}
+
+.cs-hero__cover {
+  justify-self: center;
+  width: min(100%, 560px);
+}
+
+.cs-hero__cover img {
+  display: block;
+  width: 100%;
+  height: auto; /* original proportions */
+  border-radius: clamp(14px, 2vw, 22px);
+  box-shadow: 0 24px 50px -28px rgba(58, 54, 55, 0.55);
+}
+
+@media (max-width: 900px) {
+  .cs-hero__panel--split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cs-hero__panel--split .cs-hero__logo {
+    width: min(100%, 460px);
+  }
+}
+
+/* ---------- Shared text ---------- */
+.cs-section {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.cs-eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9a7a4c; /* gold darkened enough to read on white */
+}
+
+.cs-title,
+.cs-heading {
+  margin: 0;
+  font-family: var(--cs-body);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--cs-ink);
+}
+
+.cs-title {
+  font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.6rem);
+}
+
+.cs-heading {
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+}
+
+.cs-text {
+  max-width: 46rem;
+  margin: 1.1rem 0 0;
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  line-height: 1.8;
+  color: #4d4849;
+}
+
+/* ---------- 2. Overview ---------- */
+.cs-overview {
+  padding-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+/* ---------- 3-5. Logo ---------- */
+.cs-logo {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.cs-logo figure {
+  margin: 0;
+}
+
+.cs-logo img {
+  height: auto;
+}
+
+/* construction drawing: shown as supplied, aligned left like the reference */
+.cs-logo__construction img {
+  width: min(100%, 420px);
+}
+
+.cs-logo__primary {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(3rem, 7vw, 5rem) !important;
+}
+
+.cs-logo__primary img {
+  width: min(100%, 620px);
+}
+
+.cs-seals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 220px));
+  justify-content: center;
+  gap: clamp(0.9rem, 4vw, 3rem);
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.cs-seals li {
+  min-width: 0;
+}
+
+.cs-seals img {
+  width: 100%;
+}
+
+/* ---------- 6. Colour palette ---------- */
+.cs-palette {
+  background: linear-gradient(180deg, var(--cs-paper) 0%, var(--cs-ivory) 30%, var(--cs-beige) 75%, #e6cfa4 100%);
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 600px;
+  margin: clamp(1.75rem, 4vw, 2.5rem) auto 0;
+}
+
+.swatch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  aspect-ratio: 16 / 10;
+  padding: clamp(0.75rem, 2vw, 1.1rem) clamp(0.9rem, 2.4vw, 1.4rem);
+  border: 1.5px solid var(--cs-ink);
+  background: var(--swatch);
+  color: var(--cs-ink);
+}
+
+/* alternating "leaf" corners, as in the reference */
+.swatch--1 { border-radius: 10px 10px 48px 10px; }
+.swatch--2 { border-radius: 10px 10px 10px 48px; }
+.swatch--3 { border-radius: 10px 48px 10px 10px; }
+.swatch--4 { border-radius: 48px 10px 10px 10px; }
+
+.swatch--1 { color: var(--cs-ivory); }
+
+.swatch__name {
+  font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1rem);
+  font-weight: 700;
+}
+
+.swatch__hex {
+  font-size: clamp(0.78rem, 0.74rem + 0.2vw, 0.9rem);
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+/* ---------- 7. Typography ---------- */
+.cs-type {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  background: var(--cs-ink);
+  color: var(--cs-ivory);
+  border-radius: 0 0 clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
+}
+
+.cs-type__heading {
+  text-align: center;
+  color: var(--cs-ivory);
+}
+
+.type-sample {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+.type-sample p {
+  margin: 0;
+}
+
+.type-sample__glyph {
+  flex: 0 0 auto;
+  min-width: 2.2em;
+  font-size: clamp(4.5rem, 3rem + 6vw, 8rem);
+  line-height: 1;
+  color: var(--cs-ivory);
+}
+
+.type-sample__glyph--display { font-family: var(--cs-display); }
+.type-sample__glyph--body    { font-family: var(--cs-body); }
+
+.type-sample__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 9rem;
+}
+
+.type-sample__name {
+  font-family: var(--cs-body);
+  font-size: clamp(1.9rem, 1.4rem + 2vw, 3rem);
+  line-height: 1.1;
+}
+
+.type-sample__name--display {
+  font-family: var(--cs-display);
+}
+
+.type-sample__weight {
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+  color: var(--cs-beige);
+}
+
+/* ---------- 8-10. Mockups ---------- */
+.cs-mockups figure {
+  margin: 0;
+}
+
+.cs-mockup img {
+  display: block;
+  width: 100%;
+  height: auto; /* natural proportions, nothing cropped */
+}
+
+/* the brand-applications board sits centred on white; it already carries the emblem pattern */
+.cs-mockup--applications {
+  max-width: 1100px;
+  margin: clamp(2.5rem, 6vw, 4.5rem) auto 0 !important;
+  padding-inline: clamp(0rem, 3vw, 2rem);
+}
+
+/* box and bag run edge to edge for a strong finish */
+.cs-mockup--full {
+  margin-top: clamp(2.5rem, 6vw, 4.5rem) !important;
+}
+
+.cs-mockup--full + .cs-mockup--full {
+  margin-top: 0 !important;
+}
+
+/* ---------- Back / next ---------- */
+.cs-next {
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+  background: var(--cs-paper);
+}
+
+.cs-next__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.cs-next__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  font-family: var(--cs-body);
+  font-weight: 700;
+  color: var(--cs-ink);
+  text-decoration: none;
+}
+
+.cs-next__link svg {
+  width: 1.2em;
+  height: 1.2em;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.cs-next__link:hover svg {
+  transform: translateX(-3px);
+}
+
+/* very narrow phones: two seals per row, the third centred below */
+@media (max-width: 400px) {
+  .cs-seals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cs-seals li:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 0.45rem);
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .cs-logo__construction img {
+    width: 100%;
+  }
+
+
+  .swatch {
+    aspect-ratio: 4 / 3;
+  }
+
+  .swatch--1 { border-radius: 8px 8px 32px 8px; }
+  .swatch--2 { border-radius: 8px 8px 8px 32px; }
+  .swatch--3 { border-radius: 8px 32px 8px 8px; }
+  .swatch--4 { border-radius: 32px 8px 8px 8px; }
+
+  .type-sample {
+    justify-content: flex-start;
+  }
+
+  .cs-next__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cs-next__inner .btn {
+    justify-content: center;
+  }
+}

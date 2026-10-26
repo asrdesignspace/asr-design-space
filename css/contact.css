@@ -1,0 +1,488 @@
+/* =========================================================
+   Contact page ("Let's Turn Your Ideas Into Impact")
+
+   Both illustrations are solid images (no transparency):
+   - hero-illustration: bright wall at the top, dark desk below.
+     Its top and right edges fade into the page with a CSS mask,
+     and it is dimmed slightly to sit in the dark design.
+   - form-illustration: near-black on the left, glowing icons on
+     the right. It sits in the form card's top-right corner and
+     its dark side fades into the card.
+   ========================================================= */
+
+/* One even charcoal surface for the whole page: header, body and footer.
+   (Only on this page; the homepage keeps its own backgrounds.) */
+.page-contact,
+.page-contact .site-header,
+.page-contact .site-footer {
+  background: var(--color-charcoal);
+}
+
+/* the mobile menu drops down from the header, so it matches too */
+@media (max-width: 900px) {
+  .page-contact .nav__menu {
+    background: var(--color-charcoal);
+  }
+}
+
+.page-contact main {
+  overflow: clip; /* decorations never cause sideways scroll */
+}
+
+.contact {
+  position: relative;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5rem);
+  background: var(--color-charcoal);
+}
+
+/* ---------- Decorative circles at the right edge ---------- */
+.contact__circle {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contact__circle--top {
+  top: -8rem;
+  right: -14rem;
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(circle at 30% 60%, rgba(160, 82, 89, 0.3), rgba(160, 82, 89, 0.08) 60%, transparent 75%);
+  box-shadow: inset 0 0 0 1px rgba(255, 137, 141, 0.06);
+}
+
+.contact__circle--bottom {
+  bottom: 4rem; /* kept inside the section so it isn't cut off where the footer begins */
+  right: -15rem;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle at 25% 25%, rgba(255, 137, 141, 0.38), rgba(160, 82, 89, 0.3) 45%, rgba(160, 82, 89, 0.06) 75%);
+}
+
+.contact__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+}
+
+/* ---------- Left column ---------- */
+.contact__intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.contact__intro > :not(.contact__visual) {
+  position: relative;
+  z-index: 1; /* text always sits above the photo */
+}
+
+.contact__title {
+  margin: 0;
+  font-size: clamp(2.3rem, 1.4rem + 3vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.contact__title .section-title__accent {
+  display: block; /* "Ideas Into Impact" on its own line, as in the design */
+}
+
+.contact__lead {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* Email (and phone, if added) */
+.contact-details {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  padding-left: clamp(0rem, 9vw, 8rem); /* indented, as in the design */
+}
+
+.contact-details li {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.contact-details__icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #3a2326;
+  color: var(--color-rose-light);
+}
+
+.contact-details__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-details__text {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.contact-details__label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.contact-details__value {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease;
+}
+
+.contact-details__value:hover {
+  color: var(--color-rose);
+}
+
+/* Desk illustration: bleeds to the left screen edge, fades into the page */
+.contact__visual {
+  position: relative;
+  z-index: 0;
+  margin-top: -2rem; /* tucks under the details; the faded top hides the overlap */
+  margin-left: calc(-1 * (var(--gutter) + max(0px, (100vw - var(--container)) / 2)));
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.55) 16%, #000 34%, #000 82%, transparent 100%),
+    linear-gradient(to right, #000 0%, #000 55%, rgba(0, 0, 0, 0.5) 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.55) 16%, #000 34%, #000 82%, transparent 100%),
+    linear-gradient(to right, #000 0%, #000 55%, rgba(0, 0, 0, 0.5) 78%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.contact__visual img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1093 / 1170;
+  object-fit: cover;
+  object-position: 50% 100%; /* keeps the mug, notebook and words; trims some wall */
+  filter: brightness(0.82) saturate(0.95); /* softens the bright wall */
+}
+
+/* ---------- Form card ---------- */
+.form-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  border: 1px solid rgba(255, 137, 141, 0.2);
+  border-radius: 26px;
+  /* a shade lighter than the charcoal page, so the card still reads as a raised panel */
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015) 60%),
+    #252324;
+}
+
+/* chat illustration in the top-right corner */
+.form-card__art {
+  position: absolute;
+  z-index: -1;
+  top: -1.75rem; /* lifts the icons clear of the title */
+  right: 0;
+  width: 54%;
+  pointer-events: none;
+  /* only parts brighter than the card show: its near-black background disappears, the glowing icons stay.
+     (Set here, not on the img, because the fade mask on this wrapper would isolate the img.) */
+  mix-blend-mode: lighten;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 35%),
+    linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 35%),
+    linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%);
+  mask-composite: intersect;
+}
+
+.form-card__art img {
+  width: 100%;
+  height: auto;
+}
+
+.form-card__head {
+  /* the icons sit above-right of the title, so the text can use the full width */
+  max-width: none;
+}
+
+.form-card__eyebrow {
+  position: relative;
+  margin-bottom: 2.25rem;
+  padding-bottom: 0.9rem;
+}
+
+/* short pink line under "SEND A MESSAGE" */
+.form-card__eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-rose);
+}
+
+.form-card__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 1.2rem + 0.8vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.form-card__lead {
+  margin: 0.6rem 0 0;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+/* ---------- Form fields ---------- */
+.contact-form {
+  display: grid;
+  gap: 1.35rem;
+  margin-top: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.35rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.field label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.field__req {
+  color: var(--color-rose);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  min-height: 56px;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid rgba(255, 228, 228, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 1rem; /* 16px stops iOS zooming into the field */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.field textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.field ::placeholder {
+  color: rgba(255, 228, 228, 0.5);
+  opacity: 1;
+}
+
+.field input:hover,
+.field textarea:hover {
+  border-color: rgba(255, 228, 228, 0.28);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-rose);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(255, 137, 141, 0.2);
+}
+
+.field.is-invalid input,
+.field.is-invalid textarea {
+  border-color: #ff6b70;
+}
+
+.field__error {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ff9a9e;
+}
+
+/* honeypot: off-screen, not display:none, so bots still see it */
+.form-trap {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* submit button */
+.form-submit {
+  justify-self: start;
+  min-height: 60px;
+  margin-top: 0.4rem;
+  padding-inline: 2.5rem;
+  font-size: 1.1rem;
+}
+
+.form-submit:disabled {
+  cursor: progress;
+  opacity: 0.75;
+  transform: none;
+}
+
+.form-submit__spinner {
+  display: none;
+  width: 1.05em;
+  height: 1.05em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: form-spin 0.8s linear infinite;
+}
+
+.form-submit.is-loading .form-submit__spinner { display: inline-block; }
+.form-submit.is-loading .btn__icon { display: none; }
+
+@keyframes form-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* status message under the button */
+.form-status {
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  font-size: 0.975rem;
+  line-height: 1.55;
+}
+
+.form-status[hidden] {
+  display: none;
+}
+
+.form-status a {
+  color: inherit;
+  font-weight: 700;
+}
+
+.form-status--success {
+  border: 1px solid rgba(120, 220, 160, 0.4);
+  background: rgba(60, 160, 100, 0.12);
+  color: #c9f2d8;
+}
+
+.form-status--error {
+  border: 1px solid rgba(255, 107, 112, 0.45);
+  background: rgba(255, 107, 112, 0.1);
+  color: #ffd2d4;
+}
+
+/* ---------- Tablet: stack, form first after the intro ---------- */
+@media (max-width: 1000px) {
+  .contact__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-details {
+    padding-left: 0;
+  }
+
+  /* the desk picture becomes a wide strip between intro and form */
+  .contact__visual {
+    margin: -1rem calc(-1 * var(--gutter)) 0;
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 14%, #000 92%, transparent 100%);
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 14%, #000 92%, transparent 100%);
+  }
+
+  /* bottom of the photo: mug, notebook and the full "Good Design Builds Better Businesses." */
+  .contact__visual img {
+    aspect-ratio: 4 / 3;
+    object-position: 40% 100%;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* illustration becomes a banner above the heading, so it never sits behind text */
+  .form-card {
+    padding-top: 1rem;
+  }
+
+  .form-card__art {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: auto;
+    margin: 0 calc(-1 * clamp(1.75rem, 3.5vw, 3rem)) 0.25rem;
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  }
+
+  .form-card__art img {
+    height: 120px;
+    object-fit: cover;
+    object-position: 78% 45%;
+  }
+
+  .form-card__eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-submit {
+    justify-self: stretch;
+    justify-content: center;
+  }
+
+  .contact__circle--top {
+    width: 20rem;
+    height: 20rem;
+    right: -12rem;
+  }
+
+  .contact__circle--bottom {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-submit__spinner {
+    animation-duration: 2.4s;
+  }
+}

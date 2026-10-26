@@ -1,0 +1,122 @@
+/* =========================================================
+   Testimonials ("What Clients Say")
+   ========================================================= */
+
+.testimonials {
+  padding-block: var(--section-space);
+  background: var(--color-black);
+}
+
+.testimonials__header {
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+/* ---------- Grid ---------- */
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.testimonials__grid > li {
+  display: flex; /* lets every card stretch to the row's height */
+}
+
+/* ---------- Card ---------- */
+.testimonial {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  width: 100%;
+  margin: 0;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  border: 1px solid rgba(255, 137, 141, 0.16);
+  border-radius: 18px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012) 60%),
+    var(--color-black);
+}
+
+/* Circular portrait */
+.testimonial__photo {
+  flex-shrink: 0;
+  width: clamp(72px, 6.5vw, 96px);
+  height: clamp(72px, 6.5vw, 96px);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%; /* keeps faces centred in the circle */
+  background: var(--color-charcoal);
+  box-shadow: 0 0 0 3px rgba(255, 228, 228, 0.08);
+}
+
+/* Initials, used where no approved photo is available yet */
+.testimonial__photo--initials {
+  display: grid;
+  place-items: center;
+  background: #3a2326; /* same rose-dark circle as the Services icons */
+  font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--color-rose);
+}
+
+.testimonial__body {
+  min-width: 0;
+}
+
+.testimonial__quote {
+  margin: 0;
+}
+
+.testimonial__quote p {
+  margin: 0;
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.075rem);
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.testimonial__author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 1rem;
+}
+
+.testimonial__name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.testimonial__role {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .testimonials__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* The odd card out spans the row so the grid stays balanced */
+  .testimonials__grid > li:last-of-type:nth-of-type(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .testimonial {
+    gap: 1rem;
+  }
+
+  .testimonial__photo {
+    width: 64px;
+    height: 64px;
+  }
+}

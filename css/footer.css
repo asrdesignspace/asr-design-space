@@ -1,0 +1,301 @@
+/* =========================================================
+   Footer
+   ========================================================= */
+
+.site-footer {
+  position: relative;
+  padding-block: var(--section-space);
+  background: var(--color-black);
+  color: var(--text-primary);
+}
+
+.site-footer__inner {
+  position: relative;
+}
+
+/* ---------- Columns ---------- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr) minmax(0, 1.25fr);
+}
+
+.footer-grid > * {
+  min-width: 0;
+  padding-inline: clamp(1.25rem, 3vw, 3rem);
+}
+
+.footer-grid > :first-child {
+  padding-left: 0;
+}
+
+/* thin vertical dividers between columns */
+.footer-grid > :not(:first-child) {
+  border-left: 1px solid rgba(255, 228, 228, 0.08);
+}
+
+/* ---------- Column 1: brand ---------- */
+.footer-brand__logo {
+  display: inline-block;
+}
+
+.footer-brand__logo img {
+  width: auto;
+  height: clamp(52px, 5vw, 66px);
+}
+
+.footer-brand__tagline {
+  margin: 1.25rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+}
+
+.footer-brand__tagline span {
+  margin-inline: 0.3em;
+}
+
+.footer-brand__text {
+  max-width: 28rem;
+  margin: 0.75rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.social-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.social-link {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #3a2326;
+  color: var(--color-white);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s var(--ease-out);
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.social-link:hover {
+  background: var(--color-rose);
+  color: var(--color-black);
+  transform: translateY(-2px);
+}
+
+/* ---------- Columns 2 & 3 ---------- */
+.footer-col__title {
+  position: relative;
+  margin: 0 0 2rem;
+  padding-bottom: 0.9rem;
+  font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.footer-col__title span {
+  color: var(--color-rose);
+}
+
+/* short pink underline */
+.footer-col__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5rem;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--color-rose);
+}
+
+.footer-links {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 44px;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links__chevron {
+  width: 18px;
+  height: 18px;
+  color: var(--color-rose);
+  transition: transform 0.25s var(--ease-out);
+}
+
+.footer-links a:hover {
+  color: var(--color-rose-light);
+}
+
+.footer-links a:hover .footer-links__chevron {
+  transform: translateX(3px);
+}
+
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 100%;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.footer-email:hover {
+  color: var(--color-rose);
+}
+
+.footer-email__icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #3a2326;
+  color: var(--color-white);
+}
+
+.footer-email__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ---------- Divider + bottom row ---------- */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 137, 141, 0.6);
+}
+
+.footer-bottom__copy {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* thin pink dividers: one before each link, as in the reference */
+.footer-legal li {
+  display: flex;
+  align-items: center;
+}
+
+.footer-legal li::before {
+  content: "";
+  width: 1px;
+  height: 1.6rem;
+  margin-inline: 1.5rem;
+  background: rgba(255, 137, 141, 0.55);
+}
+
+.footer-legal a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+  color: var(--color-rose);
+}
+
+/* ---------- Tablet: brand on its own row, links + contact side by side ---------- */
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 3rem;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-grid > :nth-child(2) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* ---------- Mobile: everything stacks ---------- */
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2.5rem;
+  }
+
+  .footer-grid > * {
+    padding-inline: 0;
+  }
+
+  .footer-grid > :not(:first-child) {
+    border-left: 0;
+  }
+
+  .footer-col__title {
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-brand__tagline {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* first divider not needed when the links sit on their own line */
+  .footer-legal li:first-child::before {
+    display: none;
+  }
+
+  /* the address can wrap on very narrow phones instead of overflowing */
+  .footer-email {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-link:hover,
+  .footer-links a:hover .footer-links__chevron {
+    transform: none;
+  }
+}

@@ -1,0 +1,204 @@
+/* =========================================================
+   Services ("What I Do") with a card slider
+
+   The slider is a horizontally scrolling list with CSS scroll
+   snapping, so it can be swiped, scrolled with a trackpad or
+   moved with the keyboard even before JavaScript loads.
+   js/slider.js adds the arrows, pause button and autoplay.
+   ========================================================= */
+
+.services {
+  position: relative;
+  padding-block: var(--section-space);
+  background:
+    /* fade the glow in from the top so there is no seam with the hero */
+    linear-gradient(180deg, var(--color-black) 0%, rgba(13, 13, 13, 0) 30%),
+    /* soft rose glow in the top-left corner, as in the reference */
+    radial-gradient(36rem 24rem at -4% 26%, rgba(160, 82, 89, 0.2), transparent 70%),
+    var(--color-black);
+  overflow: clip;
+}
+
+/* ---------- Header row ---------- */
+.services__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* ---------- Slider controls ---------- */
+.slider-controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.6rem;
+}
+
+.slider-controls[hidden] {
+  display: none;
+}
+
+.slider-btn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 137, 141, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-rose-light);
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.slider-btn[hidden] {
+  display: none;
+}
+
+.slider-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.slider-btn--prev svg {
+  transform: rotate(180deg);
+}
+
+.slider-btn:hover {
+  border-color: var(--color-rose);
+  background: var(--color-rose);
+  color: var(--color-black);
+}
+
+/* Pause / play icon swap */
+.slider-btn--pause .icon-play { display: none; }
+.slider-btn--pause[aria-pressed="true"] .icon-play { display: block; }
+.slider-btn--pause[aria-pressed="true"] .icon-pause { display: none; }
+
+/* ---------- Track ---------- */
+.services__slider {
+  --per-view: 4;   /* how many cards fit across */
+  --gap: 1.25rem;
+  position: relative;
+}
+
+.services__track {
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;           /* Firefox */
+  /* room for the hover lift and focus ring without clipping */
+  padding-block: 6px 10px;
+  margin-block: -6px -10px;
+  border-radius: 20px;
+}
+
+.services__track::-webkit-scrollbar {
+  display: none;                   /* Chrome / Safari */
+}
+
+.services__track:focus-visible {
+  outline-offset: 4px;
+}
+
+/* ---------- Card ---------- */
+.service-card {
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  padding: clamp(1.5rem, 2vw, 2rem);
+  border: 1px solid rgba(255, 137, 141, 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015) 60%),
+    var(--color-black);
+  transition: transform 0.35s var(--ease-out), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 137, 141, 0.38);
+  box-shadow: 0 20px 40px -24px rgba(255, 137, 141, 0.35);
+}
+
+.service-card__icon {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  margin-bottom: 1.75rem;
+  border-radius: 50%;
+  background: #3a2326; /* rose-dark blended into the dark surface */
+  box-shadow: inset 0 0 0 1px rgba(255, 137, 141, 0.12);
+}
+
+.service-card__icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.service-card__title {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.1rem + 0.35vw, 1.4rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.service-card__text {
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .services__slider {
+    --per-view: 3;
+  }
+}
+
+@media (max-width: 900px) {
+  .services__slider {
+    --per-view: 2.2; /* part of the next card peeks in, hinting you can swipe */
+  }
+
+  /* let the track run edge to edge so the peeking card reaches the screen edge */
+  .services__track {
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter);
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .services__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .services__slider {
+    --per-view: 1.15;
+    --gap: 1rem;
+  }
+
+  .service-card {
+    min-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card:hover {
+    transform: none;
+  }
+}

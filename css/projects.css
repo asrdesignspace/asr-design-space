@@ -1,0 +1,191 @@
+/* =========================================================
+   Featured Projects ("Recent Work")
+   ========================================================= */
+
+.projects {
+  position: relative;
+  padding-block: var(--section-space);
+  background: var(--color-black);
+}
+
+/* ---------- Heading ---------- */
+.projects__header {
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+
+.projects__lead {
+  max-width: 34rem;
+}
+
+/* ---------- Grid ---------- */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* ---------- Card ---------- */
+.project-card {
+  position: relative; /* anchor for the full-card link */
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 137, 141, 0.2);
+  border-radius: 18px;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012) 60%),
+    var(--color-black);
+  transition: border-color 0.3s ease;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  border-color: rgba(255, 137, 141, 0.5);
+}
+
+/* Image: same 16:9 frame for every card, cropped from the top-centre
+   so website headers and headlines stay in view */
+.project-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  /* neutral placeholder, visible only while a screenshot is missing */
+  background:
+    radial-gradient(120% 90% at 30% 20%, rgba(160, 82, 89, 0.28), transparent 60%),
+    var(--color-charcoal);
+}
+
+.project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--cover-pos, center top); /* each card can set its own focal point */
+  transition: transform 0.6s var(--ease-out);
+}
+
+/* Hide the image until the real screenshot file exists (see onerror in index.html) */
+.project-card__media img[hidden] {
+  display: none;
+}
+
+.project-card:hover .project-card__media img {
+  transform: scale(1.04);
+}
+
+.project-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1rem 0.75rem 0.85rem;
+}
+
+.project-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 44px; /* same title position with or without the arrow */
+}
+
+.project-card__title {
+  margin: 0;
+  font-size: clamp(1.1rem, 1rem + 0.3vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.project-card__link {
+  text-decoration: none;
+}
+
+/* Stretch the title link over the whole card, so the image, title
+   and arrow are all clickable while there is still just one link */
+.project-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 18px;
+}
+
+.project-card__link:focus-visible {
+  outline: none;
+}
+
+.project-card__link:focus-visible::after {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+/* Pink circular arrow */
+.project-card__arrow {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;  /* comfortable tap size */
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-rose);
+  color: var(--color-black);
+  transition: transform 0.3s var(--ease-out), background-color 0.3s ease;
+}
+
+.project-card__arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.project-card:hover .project-card__arrow {
+  background: #ff9ea1;
+  transform: translateX(3px);
+}
+
+/* Tags */
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  min-height: 2rem; /* keeps cards level even when tags are still missing */
+}
+
+.project-card__tags li {
+  padding: 0.32rem 0.75rem;
+  border: 1px solid rgba(255, 228, 228, 0.1);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-secondary);
+}
+
+/* ---------- "View All Projects" ---------- */
+.projects__footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .projects__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card:hover .project-card__media img,
+  .project-card:hover .project-card__arrow {
+    transform: none;
+  }
+}

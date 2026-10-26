@@ -1,0 +1,442 @@
+/* =========================================================
+   About page
+   Dark, coral-accented; reuses the site's tokens, section
+   headings (base.css) and buttons.
+   ========================================================= */
+
+.page-about main {
+  overflow: clip;
+  background:
+    radial-gradient(50rem 32rem at 85% 0%, rgba(160, 82, 89, 0.16), transparent 70%),
+    radial-gradient(40rem 30rem at 0% 55%, rgba(160, 82, 89, 0.08), transparent 70%),
+    var(--color-black);
+}
+
+/* outline button, used for "Download Resume" */
+.btn--ghost {
+  border: 1.5px solid rgba(255, 137, 141, 0.55);
+  background: transparent;
+  color: var(--color-rose-light);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-rose);
+  background: rgba(255, 137, 141, 0.1);
+  transform: translateY(-2px);
+}
+
+.ab-section {
+  padding-block: var(--section-space);
+}
+
+/* ---------- Hero ---------- */
+.ab-hero {
+  padding-block: clamp(2rem, 5vw, 4rem) var(--section-space);
+}
+
+.ab-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.ab-hero__title {
+  margin: 0;
+  font-size: clamp(2.4rem, 1.5rem + 3.2vw, 4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.ab-hero__role {
+  margin: 1rem 0 0;
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.2rem);
+  font-weight: 700;
+  color: var(--color-rose-light);
+}
+
+.ab-hero__role span {
+  margin-inline: 0.35em;
+  color: var(--color-rose-dark);
+}
+
+.ab-hero__bio {
+  max-width: 36rem;
+  margin: 1.1rem 0 0;
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.ab-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.ab-hero__media {
+  justify-self: center;
+  width: min(100%, 480px);
+}
+
+.ab-hero__media img {
+  display: block;
+  width: 100%;
+  height: auto; /* original proportions; the hexagon frame is part of the artwork */
+}
+
+/* ---------- Statistics ---------- */
+.ab-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid rgba(255, 137, 141, 0.18);
+  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012) 60%), #121112;
+}
+
+.ab-stats li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem) 1rem;
+  text-align: center;
+}
+
+.ab-stats li + li {
+  border-left: 1px solid rgba(255, 228, 228, 0.08);
+}
+
+.ab-stats__value {
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-rose);
+}
+
+.ab-stats__label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ---------- Journey timeline ---------- */
+.journey {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  margin: clamp(2rem, 4vw, 2.75rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* connecting line through the icons */
+.journey::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 137, 141, 0.15), var(--color-rose), rgba(255, 137, 141, 0.15));
+}
+
+.journey__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.journey__icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--color-rose);
+  border-radius: 50%;
+  background: #1c1415;
+  color: var(--color-rose);
+}
+
+.journey__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.journey__date {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-rose);
+}
+
+.journey__title {
+  margin: 0.4rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.journey__text {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---------- Tools & skills ---------- */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.tool-group,
+.skill-group {
+  padding: clamp(1.25rem, 2.5vw, 1.6rem);
+  border: 1px solid rgba(255, 137, 141, 0.16);
+  border-radius: 18px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012) 60%), #121112;
+}
+
+.tool-group__title {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-rose-light);
+}
+
+.tool-group__list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, transform 0.2s var(--ease-out);
+}
+
+.tool:hover {
+  background: rgba(255, 137, 141, 0.1);
+  transform: translateX(3px);
+}
+
+.tool img {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 0.7fr);
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chips li {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(255, 228, 228, 0.12);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.certs {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.cert {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0.9rem;
+  border-left: 3px solid var(--color-rose);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cert__name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cert__year {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-rose);
+}
+
+/* ---------- Let's connect ---------- */
+.ab-connect {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.5rem, 5vw, 4rem);
+  border: 1px solid rgba(255, 137, 141, 0.18);
+  border-radius: 24px;
+  background:
+    radial-gradient(70% 140% at 68% 0%, rgba(160, 82, 89, 0.55), transparent 70%),
+    linear-gradient(100deg, #1d1416 0%, #2a1a1d 45%, #2a1a1d 70%, #1a1213 100%);
+}
+
+.ab-connect .section-eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.ab-connect__title {
+  margin: 0;
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.ab-connect__text {
+  max-width: 34rem;
+  margin: 0.75rem 0 0;
+  color: var(--text-secondary);
+}
+
+.ab-connect__email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  color: var(--color-rose-light);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 137, 141, 0.6);
+  text-underline-offset: 5px;
+}
+
+.ab-connect__email:hover {
+  color: var(--color-rose);
+}
+
+.ab-connect__btn {
+  min-height: 52px;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1100px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-grid > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* timeline becomes a vertical list */
+  .journey {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-left: 0.25rem;
+  }
+
+  .journey::before {
+    top: 28px;
+    bottom: 28px;
+    left: calc(0.25rem + 27px);
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--color-rose), rgba(255, 137, 141, 0.2));
+  }
+
+  .journey__item {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    column-gap: 1.1rem;
+    align-items: start;
+    text-align: left;
+  }
+
+  .journey__icon { grid-row: 1 / 4; }
+  .journey__date { margin-top: 0.2rem; }
+  .journey__date,
+  .journey__title,
+  .journey__text { grid-column: 2; }
+}
+
+@media (max-width: 900px) {
+  .ab-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ab-hero__media {
+    order: -1;
+    width: min(80%, 400px);
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .ab-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ab-stats li + li {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 228, 228, 0.08);
+  }
+
+  .tools-grid,
+  .skills-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ab-hero__actions .btn,
+  .ab-connect__btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ab-connect {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool:hover,
+  .btn--ghost:hover {
+    transform: none;
+  }
+}

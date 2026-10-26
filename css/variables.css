@@ -1,0 +1,44 @@
+/* =========================================================
+   Design tokens: change brand values here, everywhere updates
+   ========================================================= */
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand palette */
+  --color-black: #0d0d0d;
+  --color-charcoal: #202020;
+  --color-rose-dark: #a05259;
+  --color-rose: #ff898d;
+  --color-rose-light: #ffe4e4;
+  --color-white: #ffffff;
+
+  /* Text */
+  --text-primary: #f5f2f2;
+  --text-secondary: rgba(255, 228, 228, 0.72); /* rose-light, softened */
+  --text-muted: rgba(255, 255, 255, 0.55);
+
+  /* Hero surface: sampled from the top edge of hero-image.png (#1a1a19)
+     so the photo's dark backdrop and the page become one surface. */
+  --hero-bg-top: #1a1a19;
+  --hero-bg-bottom: #121212;
+
+  /* Typography */
+  --font-sans: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Layout */
+  --container: 1280px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --header-h: 84px;
+  --section-space: 2rem; /* 32px above and below each content section */
+
+  /* Shape & motion */
+  --radius-pill: 999px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

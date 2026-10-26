@@ -1,0 +1,70 @@
+/* =========================================================
+   Call to action ("Let's Connect")
+   A single wide panel inside the normal content width.
+   ========================================================= */
+
+.cta {
+  padding-block: var(--section-space);
+  background: var(--color-black);
+}
+
+.cta__panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.75rem, 3.5vw, 2.5rem) clamp(1.5rem, 5vw, 4rem);
+  border: 1px solid rgba(255, 137, 141, 0.18);
+  border-radius: 24px;
+  /* soft warm glow, brightest toward the upper middle-right, fading to near-black */
+  background:
+    radial-gradient(70% 140% at 68% 0%, rgba(160, 82, 89, 0.55), transparent 70%),
+    linear-gradient(100deg, #1d1416 0%, #2a1a1d 45%, #2a1a1d 70%, #1a1213 100%);
+}
+
+.cta__text {
+  min-width: 0;
+}
+
+.cta__text .section-eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.cta__title {
+  margin: 0;
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.cta__lead {
+  margin: 0.75rem 0 0;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  color: var(--text-secondary);
+}
+
+.cta__btn {
+  flex-shrink: 0;
+  min-height: 52px;
+  padding-inline: 2rem;
+  font-size: 1.05rem;
+}
+
+/* ---------- Mobile: stack text and button ---------- */
+@media (max-width: 640px) {
+  .cta__panel {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    border-radius: 20px;
+    background:
+      radial-gradient(120% 90% at 70% 0%, rgba(160, 82, 89, 0.5), transparent 70%),
+      linear-gradient(160deg, #1d1416 0%, #2a1a1d 55%, #1a1213 100%);
+  }
+
+  .cta__btn {
+    justify-content: center;
+  }
+}

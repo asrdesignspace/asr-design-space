@@ -1,0 +1,439 @@
+/* =========================================================
+   All Projects page (projects/index.html)
+   Uses the shared container, tokens, eyebrow and button styles.
+   ========================================================= */
+
+.page-work main {
+  overflow: clip; /* the hero artwork never causes sideways scroll */
+  background: var(--color-black);
+}
+
+/* "Projects" is the current page in the main navigation */
+.page-work .nav__links a[aria-current="page"] {
+  color: var(--color-rose);
+}
+
+.page-work .nav__links a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Hero ---------- */
+.work-hero {
+  position: relative;
+  background:
+    radial-gradient(34rem 22rem at -6% 0%, rgba(160, 82, 89, 0.32), transparent 70%),
+    linear-gradient(180deg, var(--hero-bg-top) 0%, var(--color-black) 100%);
+}
+
+/* Decorative artwork, pinned to the right edge of the screen.
+   Its edges fade into the background so there is no visible box. */
+.work-hero__art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  display: block;
+  width: min(46vw, 820px);
+  height: auto;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%), linear-gradient(180deg, #000 70%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%), linear-gradient(180deg, #000 70%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.work-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding-block: calc(var(--section-space) * 1.5) var(--section-space);
+}
+
+.work-hero__inner > * {
+  max-width: min(40rem, 52%);
+}
+
+.work-hero__title {
+  margin: 0.2rem 0 0;
+  font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.2rem); /* same scale as the other page heroes */
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.work-hero__accent {
+  color: var(--color-rose); /* fallback */
+  background: linear-gradient(100deg, var(--color-rose) 10%, #ffb1b3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.work-hero__lead {
+  margin: 1rem 0 0;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ---------- Gallery section ---------- */
+.work {
+  padding-block: var(--section-space) calc(var(--section-space) * 2);
+}
+
+/* ---------- Toolbar: filters + search ---------- */
+.work-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.work-toolbar[hidden] {
+  display: none;
+}
+
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.work-filter {
+  min-height: 42px;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(255, 228, 228, 0.16);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.02);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.work-filter:hover {
+  border-color: rgba(255, 137, 141, 0.55);
+  color: var(--color-white);
+}
+
+.work-filter[aria-pressed="true"] {
+  border-color: var(--color-rose);
+  background: var(--color-rose);
+  color: var(--color-black);
+  font-weight: 700;
+}
+
+.work-filter:focus-visible,
+.work-search__input:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+.work-search {
+  position: relative;
+  flex: 1 1 10.5rem;
+  max-width: 20rem;
+  margin-left: auto;
+}
+
+.work-search__icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.work-search__input {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.55rem 1rem 0.55rem 2.75rem;
+  border: 1px solid rgba(255, 228, 228, 0.16);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.02);
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: border-color 0.25s ease;
+}
+
+.work-search__input::placeholder {
+  color: var(--text-muted);
+}
+
+.work-search__input:hover,
+.work-search__input:focus {
+  border-color: rgba(255, 137, 141, 0.55);
+}
+
+/* ---------- Grid ---------- */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.5vw, 2rem) 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-grid[hidden] {
+  display: none;
+}
+
+/* ---------- Card ---------- */
+.work-card {
+  position: relative; /* anchor for the full-card link */
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.work-card[hidden] {
+  display: none;
+}
+
+.work-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(255, 228, 228, 0.1);
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 90% at 30% 20%, rgba(160, 82, 89, 0.28), transparent 60%),
+    var(--color-charcoal);
+  transition: border-color 0.3s ease;
+}
+
+.work-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--cover-pos, center); /* each card sets its own focal point */
+  transition: transform 0.6s var(--ease-out);
+}
+
+.work-card:hover .work-card__media,
+.work-card:focus-within .work-card__media {
+  border-color: rgba(255, 137, 141, 0.5);
+}
+
+.work-card:hover .work-card__media img {
+  transform: scale(1.04);
+}
+
+/* Open-project link. The link itself is unpositioned, so its ::after
+   stretches over the whole card (image and text are clickable too),
+   while the visible circle icon sits in the image's top-right corner. */
+.work-card__open {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.work-card__open::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  z-index: 2;
+  border-radius: 18px;
+}
+
+.work-card__open:focus-visible {
+  outline: none;
+}
+
+.work-card__open:focus-visible::after {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 2px;
+}
+
+.work-card__icon {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(13, 13, 13, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.work-card__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.work-card:hover .work-card__icon,
+.work-card__open:focus-visible .work-card__icon {
+  background: var(--color-rose);
+  color: var(--color-black);
+}
+
+.work-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0.9rem 0.1rem 0;
+}
+
+.work-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-card__tags li {
+  padding: 0.22rem 0.7rem;
+  border: 1px solid rgba(255, 137, 141, 0.35);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 137, 141, 0.06);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-rose);
+}
+
+.work-card__title {
+  margin: 0.8rem 0 0;
+  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem);
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.work-card__text {
+  margin: 0.45rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---------- Empty state ---------- */
+.work-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3rem) 1.5rem;
+  border: 1px dashed rgba(255, 228, 228, 0.16);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.work-empty[hidden] {
+  display: none;
+}
+
+.work-empty__icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #3a2326;
+  color: var(--color-rose);
+}
+
+.work-empty__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.work-empty__title {
+  margin: 1rem 0 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.work-empty__text {
+  margin: 0.5rem 0 1.4rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1100px) {
+  .work-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  /* artwork moves into the flow, under the text, full width */
+  .work-hero {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .work-hero__art {
+    position: static;
+    align-self: flex-end; /* keeps the arc at the right edge, as on desktop */
+    width: min(100%, 600px);
+    margin-top: -0.5rem;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 75%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 75%, transparent 100%);
+  }
+
+  .work-hero__inner {
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .work-hero__inner > * {
+    max-width: 40rem;
+  }
+
+  .work-search {
+    flex-basis: 100%;
+    max-width: none;
+    margin-left: 0;
+    order: -1; /* search first, filters wrap below it */
+  }
+}
+
+@media (max-width: 800px) {
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 540px) {
+  .work-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .work-filters {
+    gap: 0.45rem;
+  }
+
+  .work-filter {
+    padding-inline: 0.85rem;
+    font-size: 0.86rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-card:hover .work-card__media img {
+    transform: none;
+  }
+}
