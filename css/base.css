@@ -156,6 +156,46 @@ ul {
   }
 }
 
+/* ---------- Ticker pause / play button (Tech Stack + Testimonials) ---------- */
+.ticker-pause {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid rgba(255, 137, 141, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-rose-light);
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.ticker-pause[hidden] { display: none; }
+.ticker-pause svg { width: 16px; height: 16px; }
+.ticker-pause .icon-play { display: none; }
+.ticker-pause[aria-pressed="true"] .icon-play { display: block; }
+.ticker-pause[aria-pressed="true"] .icon-pause { display: none; }
+
+.ticker-pause:hover {
+  border-color: var(--color-rose);
+  background: var(--color-rose);
+  color: var(--color-black);
+}
+
+.ticker-pause:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-pause {
+    display: none; /* nothing moves, so nothing to pause */
+  }
+}
+
 /* ---------- Text link with arrow ("View All Projects", "Learn More") ---------- */
 .text-link {
   display: inline-flex;

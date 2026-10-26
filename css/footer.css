@@ -167,6 +167,46 @@
   color: var(--color-rose);
 }
 
+/* "Copied!" bubble shown after the email is copied (js/copy-email.js) */
+.footer-email {
+  position: relative;
+}
+
+.copy-toast {
+  position: absolute;
+  left: calc(52px + 1rem); /* starts above the address, after the icon */
+  bottom: calc(100% + 0.4rem);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-rose);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-black);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.footer-email.is-copied .copy-toast {
+  opacity: 1;
+  transform: none;
+}
+
+.footer-email:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-toast {
+    transition: none;
+    transform: none;
+  }
+}
+
 .footer-email__icon {
   display: grid;
   flex-shrink: 0;

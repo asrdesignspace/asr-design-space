@@ -1,25 +1,30 @@
 /* =========================================================
-   Tech stack ticker: pause / play button
+   Tickers (Tech Stack and Testimonials): pause / play buttons
 
-   The scrolling itself is pure CSS (css/about.css). This script
-   only adds the pause button, so anyone can stop the moving
-   icons, as accessibility guidelines ask for moving content.
+   The scrolling itself is pure CSS (css/about.css and
+   css/testimonials.css). This script only wires up each pause
+   button, so anyone can stop the moving content, as
+   accessibility guidelines ask. Each button names its ticker
+   with aria-controls="<ticker id>".
    ========================================================= */
 
 (function () {
   "use strict";
 
-  var ticker = document.querySelector("[data-ticker]");
-  var button = document.querySelector("[data-ticker-pause]");
-  if (!ticker || !button) return;
+  document.querySelectorAll("[data-ticker-pause]").forEach(function (button) {
+    var ticker = document.getElementById(button.getAttribute("aria-controls"));
+    if (!ticker) return;
 
-  var label = button.querySelector(".visually-hidden");
+    var label = button.querySelector(".visually-hidden");
+    var pauseText = label.textContent;                      // e.g. "Pause the testimonials animation"
+    var playText = pauseText.replace(/^Pause/, "Play");
 
-  button.addEventListener("click", function () {
-    var paused = ticker.classList.toggle("is-paused");
-    button.setAttribute("aria-pressed", String(paused));
-    label.textContent = paused ? "Play the tech stack animation" : "Pause the tech stack animation";
+    button.addEventListener("click", function () {
+      var paused = ticker.classList.toggle("is-paused");
+      button.setAttribute("aria-pressed", String(paused));
+      label.textContent = paused ? playText : pauseText;
+    });
+
+    button.hidden = false;
   });
-
-  button.hidden = false;
 })();

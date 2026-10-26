@@ -64,67 +64,69 @@
 }
 
 .info-card {
+  --icon-w: 24px;
+  --icon-gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 150px;
+  padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid rgba(255, 137, 141, 0.42);
+  border-radius: 16px;
+  background: var(--color-black);
+  transition: border-color 0.25s ease;
+}
+
+.info-card:hover {
+  border-color: rgba(255, 137, 141, 0.7);
+}
+
+/* icon + label on one line */
+.info-card__top {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  min-height: 150px;
-  padding: clamp(1.25rem, 2.2vw, 1.75rem) clamp(1.25rem, 2.5vw, 2rem);
-  border: 1px solid rgba(255, 137, 141, 0.16);
-  border-radius: 18px;
-  background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012) 60%),
-    var(--color-black);
+  gap: var(--icon-gap);
 }
 
 .info-card__icon {
   flex-shrink: 0;
-  width: clamp(56px, 5vw, 72px);
-  height: clamp(56px, 5vw, 72px);
-  color: var(--color-rose);
-}
-
-.info-card__icon--sm {
-  width: 44px;
-  height: 44px;
-}
-
-.info-card__text {
-  min-width: 0;
+  width: var(--icon-w);
+  height: auto;
 }
 
 .info-card__label {
   margin: 0;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: clamp(1.1rem, 1rem + 0.35vw, 1.3rem);
+  font-weight: 600;
   line-height: 1.3;
   color: var(--text-primary);
 }
 
+/* number and tech icons line up with the label text, not the icon */
+.info-card__value,
+.tech-ticker {
+  margin-left: calc(var(--icon-w) + var(--icon-gap));
+}
+
 .info-card__value {
-  margin: 0.25rem 0 0;
-  font-size: clamp(2.5rem, 2rem + 1.6vw, 3.25rem);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: clamp(2.75rem, 2.1rem + 2vw, 3.75rem);
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--color-rose);
-}
-
-/* Tech Stack card: icon + label on top, logos underneath */
-.info-card--stack {
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.info-card__top {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
 }
 
 .info-card--stack {
   min-width: 0; /* lets the ticker shrink inside the grid cell */
+  gap: 0.9rem;
+}
+
+/* small pause / play button sits at the end of the label row */
+.info-card__top .ticker-pause {
+  margin-left: auto;
 }
 
 /* ---------- Tech stack ticker (moves right to left) ---------- */
@@ -165,41 +167,7 @@
 .tech-list img {
   display: block;
   width: auto;
-  height: 30px;
-}
-
-/* small pause / play button beside the "Tech Stack" label */
-.ticker-pause {
-  display: grid;
-  flex-shrink: 0;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  margin-left: auto;
-  padding: 0;
-  border: 1px solid rgba(255, 137, 141, 0.28);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--color-rose-light);
-  cursor: pointer;
-  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-}
-
-.ticker-pause[hidden] { display: none; }
-.ticker-pause svg { width: 16px; height: 16px; }
-.ticker-pause .icon-play { display: none; }
-.ticker-pause[aria-pressed="true"] .icon-play { display: block; }
-.ticker-pause[aria-pressed="true"] .icon-pause { display: none; }
-
-.ticker-pause:hover {
-  border-color: var(--color-rose);
-  background: var(--color-rose);
-  color: var(--color-black);
-}
-
-.ticker-pause:focus-visible {
-  outline: 2px solid var(--color-rose);
-  outline-offset: 3px;
+  height: 44px;
 }
 
 /* "Reduce motion": no movement, just a wrapped row of icons */

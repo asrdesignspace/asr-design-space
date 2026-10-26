@@ -11,15 +11,51 @@
   margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
 }
 
-/* ---------- Grid ---------- */
-.testimonials__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+.testimonials__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
-.testimonials__grid > li {
-  display: flex; /* lets every card stretch to the row's height */
+/* ---------- Ticker (moves right to left) ---------- */
+.testimonials__ticker {
+  --t-gap: 1.25rem;
+  /* every card is about a third of the content width, so one set of three
+     is always wider than the visible area and the loop never shows a gap */
+  --t-card: clamp(280px, 30vw, 400px);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.testimonials__track {
+  display: flex;
+  width: max-content;
+  animation: testimonials-ticker 50s linear infinite; /* raise the seconds to slow it down */
+}
+
+.testimonials__ticker:hover .testimonials__track,
+.testimonials__ticker.is-paused .testimonials__track {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-ticker {
+  to { transform: translateX(-50%); }
+}
+
+.testimonials__list {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--t-gap);
+  margin: 0;
+  padding: 0 var(--t-gap) 0 0; /* trailing gap keeps spacing even at the loop point */
+  list-style: none;
+}
+
+.testimonials__list > li {
+  display: flex; /* every card stretches to the tallest one */
+  flex: 0 0 var(--t-card);
 }
 
 /* ---------- Card ---------- */
@@ -94,21 +130,15 @@
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1100px) {
-  .testimonials__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  /* The odd card out spans the row so the grid stays balanced */
-  .testimonials__grid > li:last-of-type:nth-of-type(odd) {
-    grid-column: 1 / -1;
-  }
-}
-
 @media (max-width: 640px) {
-  .testimonials__grid {
-    grid-template-columns: minmax(0, 1fr);
+  .testimonials__header {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
+  }
+
+  .testimonials__ticker {
+    --t-gap: 1rem;
   }
 
   .testimonial {
@@ -118,5 +148,30 @@
   .testimonial__photo {
     width: 64px;
     height: 64px;
+  }
+}
+
+/* "Reduce motion": no movement; the cards sit in a grid instead */
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__ticker {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .testimonials__track {
+    width: auto;
+    animation: none;
+  }
+
+  .testimonials__list {
+    display: grid;
+    flex-shrink: 1;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    width: 100%;
+    padding: 0;
+  }
+
+  .testimonials__list--copy {
+    display: none;
   }
 }
