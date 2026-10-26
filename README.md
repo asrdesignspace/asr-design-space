@@ -47,25 +47,22 @@ Speeds are in the `TIMING` object at the top of `js/typewriter.js`.
 
 Upload the whole folder (keep the structure) to your host or GitHub Pages; `index.html` is the entry point.
 
-## Contact form setup (required before the form can send email)
+## Contact form (Formspree)
 
-The form sends messages through **Formspree** (formspree.io), a form service that works on
-static hosting such as GitHub Pages. Nothing secret lives in this code: the Formspree form ID
-is designed to be public.
+The Contact page form (`contact/index.html`) sends messages through **Formspree**, a form
+service that works on static hosting such as GitHub Pages. The endpoint is set in the form's
+`action` attribute: `https://formspree.io/f/xgaaalaa`. Formspree form IDs are meant to be
+public, so nothing secret lives in this code.
 
-1. Sign up at formspree.io with **hello@asrdesignspace.com** and confirm that address.
-2. Create a new form. Formspree shows an endpoint like `https://formspree.io/f/abcdwxyz`.
-3. Open `contact/index.html`, find `action="https://formspree.io/f/YOUR_FORM_ID"` and
-   replace `YOUR_FORM_ID` with your ID (e.g. `abcdwxyz`).
-4. Publish the site, open the Contact page on your real domain and send yourself a test
-   message, then check that it arrives at hello@asrdesignspace.com (and in Formspree's
-   dashboard). Follow any confirmation steps Formspree shows the first time.
+`js/contact-form.js` checks the fields, sends the form in the background with `fetch()`,
+blocks repeat clicks while sending, and shows a success or error message under the button.
+Without JavaScript, the browser's own validation runs and the form posts straight to Formspree.
 
-Until step 3 is done, the form checks the fields but shows "the contact form isn't connected
-yet" with your email address instead of sending.
+Fields sent: `name`, `email` (Formspree uses it as the Reply-To address), `subject`, `message`,
+plus `_subject` (the subject line of the email you receive) and `_gotcha` (a hidden spam trap).
 
-Fields sent: `name`, `email` (used as the reply-to address), `subject`, `message`.
-`_gotcha` is a hidden spam trap that Formspree uses to drop bot submissions.
+To test: on the published site, open the Contact page, send a message, and check that it arrives
+at hello@asrdesignspace.com and appears under the form in the Formspree dashboard.
 
 ## Adding or updating a project on the All Projects page
 
@@ -82,4 +79,3 @@ Open `projects/index.html` and find the `<ul class="work-grid">` list. Each proj
 
 Search looks at the title, description, badges, categories and keywords. No JavaScript changes
 are needed. Remember to update the homepage card too if the project is also featured there.
-# asr-design-space

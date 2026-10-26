@@ -100,9 +100,10 @@
             <p class="form-card__lead">Fill out the form and I'll get back to you as soon as possible.</p>
           </div>
 
-          <!-- Submissions go to Formspree, which emails them to hello@asrdesignspace.com.
-               SETUP: replace YOUR_FORM_ID below with the ID from your Formspree dashboard (see README). -->
-          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" data-contact-form>
+          <!-- Submissions go to Formspree (form xgaaalaa), which emails them to hello@asrdesignspace.com.
+               js/contact-form.js sends them in the background and shows the result here;
+               without JavaScript the browser posts straight to Formspree. -->
+          <form class="contact-form" action="https://formspree.io/f/xgaaalaa" method="POST" data-contact-form>
             <div class="form-row">
               <div class="field">
                 <label for="cf-name">Name <span class="field__req" aria-hidden="true">*</span></label>

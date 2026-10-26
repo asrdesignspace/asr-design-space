@@ -20,7 +20,6 @@
   if (!form) return;
 
   var CONTACT_EMAIL = "hello@asrdesignspace.com";
-  var PLACEHOLDER_ID = "YOUR_FORM_ID";
   var TIMEOUT_MS = 15000;
   var EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -140,18 +139,17 @@
       return;
     }
 
-    var endpoint = form.getAttribute("action") || "";
-    if (endpoint.indexOf(PLACEHOLDER_ID) !== -1) {
-      // The Formspree form ID has not been added yet (see README)
-      setStatus("error", "Sorry, the contact form isn't connected yet, so your message wasn't sent." + fallback);
-      return;
-    }
+    // The Formspree endpoint lives in the form's action attribute (contact/index.html)
+    var endpoint = form.getAttribute("action");
 
     setSending(true);
 
     var data = new FormData(form);
     // trim the text fields before sending
     ["name", "email", "subject", "message"].forEach(function (n) { data.set(n, fieldValue(n)); });
+    // Subject line of the email Formspree sends you (Formspree's special _subject field).
+    // Formspree also uses the "email" field as the Reply-To address, so you can reply directly.
+    data.set("_subject", "New message from asrdesignspace.com: " + fieldValue("subject"));
 
     var controller = "AbortController" in window ? new AbortController() : null;
     var timer = controller ? setTimeout(function () { controller.abort(); }, TIMEOUT_MS) : null;
