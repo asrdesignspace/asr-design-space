@@ -326,14 +326,58 @@
                 <path d="M15 14 5 24l10 10M33 14l10 10-10 10M27 9l-6 30"/>
               </svg>
               <p class="info-card__label">Tech Stack</p>
+              <!-- Pause / play for the moving icons (shown by js/ticker.js) -->
+              <button class="ticker-pause" type="button" aria-pressed="false" data-ticker-pause hidden>
+                <span class="visually-hidden">Pause the tech stack animation</span>
+                <svg class="icon-pause" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10M13 5v10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+                <svg class="icon-play" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5.5v9l7.5-4.5z" fill="currentColor"/></svg>
+              </button>
             </div>
-            <!-- Technologies verified on the live site: HTML, CSS, Bootstrap (About page), Framer (Perfect Designs case study) -->
-            <ul class="tech-list">
-              <li><img src="assets/icons/tech/html5.svg" alt="HTML5" title="HTML5" width="40" height="40" loading="lazy"></li>
-              <li><img src="assets/icons/tech/css3.svg" alt="CSS3" title="CSS3" width="40" height="40" loading="lazy"></li>
-              <li><img src="assets/icons/tech/bootstrap.svg" alt="Bootstrap" title="Bootstrap" width="40" height="40" loading="lazy"></li>
-              <li><img src="assets/icons/tech/framer.svg" alt="Framer" title="Framer" width="40" height="40" loading="lazy"></li>
-            </ul>
+            <!-- Tech stack ticker: icons supplied by ASR Design Space (assets/icons/tech/).
+                 The list appears twice so the loop is seamless; the second copy is hidden
+                 from screen readers. To add a tool, add the same <li> to BOTH lists. -->
+            <div class="tech-ticker" data-ticker>
+              <div class="tech-ticker__track">
+                <ul class="tech-list" aria-label="Tools and technologies I use">
+                  <li><img src="assets/icons/tech/figma.svg" alt="Figma" title="Figma" width="21" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/sketch.svg" alt="Sketch" title="Sketch" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/framer.svg" alt="Framer" title="Framer" width="20" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/photoshop.svg" alt="Adobe Photoshop" title="Adobe Photoshop" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/canva.svg" alt="Canva" title="Canva" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/html5.svg" alt="HTML5" title="HTML5" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/css3.svg" alt="CSS3" title="CSS3" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/javascript.svg" alt="JavaScript" title="JavaScript" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/react.svg" alt="React" title="React" width="35" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/bootstrap.svg" alt="Bootstrap" title="Bootstrap" width="36" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/wordpress.svg" alt="WordPress" title="WordPress" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/woocommerce.svg" alt="WooCommerce" title="WooCommerce" width="44" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/github.svg" alt="GitHub" title="GitHub" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/jira.svg" alt="Jira" title="Jira" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/notion.svg" alt="Notion" title="Notion" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/claude.svg" alt="Claude" title="Claude" width="30" height="30" decoding="async"></li>
+                </ul>
+                <ul class="tech-list tech-list--copy" aria-hidden="true">
+                  <li><img src="assets/icons/tech/figma.svg" alt="" title="Figma" width="21" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/sketch.svg" alt="" title="Sketch" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/framer.svg" alt="" title="Framer" width="20" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/photoshop.svg" alt="" title="Adobe Photoshop" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/canva.svg" alt="" title="Canva" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/html5.svg" alt="" title="HTML5" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/css3.svg" alt="" title="CSS3" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/javascript.svg" alt="" title="JavaScript" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/react.svg" alt="" title="React" width="35" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/bootstrap.svg" alt="" title="Bootstrap" width="36" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/wordpress.svg" alt="" title="WordPress" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/woocommerce.svg" alt="" title="WooCommerce" width="44" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/github.svg" alt="" title="GitHub" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/jira.svg" alt="" title="Jira" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/notion.svg" alt="" title="Notion" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/chatgpt.svg" alt="" title="ChatGPT" width="30" height="30" decoding="async"></li>
+                  <li><img src="assets/icons/tech/claude.svg" alt="" title="Claude" width="30" height="30" decoding="async"></li>
+                </ul>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -506,6 +550,7 @@
   <script src="js/nav.js" defer></script>
   <script src="js/typewriter.js" defer></script>
   <script src="js/slider.js" defer></script>
+  <script src="js/ticker.js" defer></script>
   <script src="js/footer.js" defer></script>
 </body>
 </html>
