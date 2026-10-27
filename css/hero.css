@@ -58,7 +58,7 @@
 }
 
 .hero__title-accent {
-  color: var(--color-rose);
+  color: var(--color-rose-light); /* #FFE4E4 */
 }
 
 /* ---------- Typewriter (h1) ---------- */
@@ -68,7 +68,7 @@
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  color: var(--color-white);
+  color: #ff878d; /* typewriter text colour */
 }
 
 /* The typewriter reserves the space of its longest phrase
