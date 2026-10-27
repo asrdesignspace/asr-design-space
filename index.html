@@ -12,9 +12,10 @@
   <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
 
   <!-- Preload the font and the hero image so the first screen paints quickly -->
+  <link rel="preconnect" href="https://res.cloudinary.com">
   <link rel="preload" href="assets/fonts/nunito-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/images/hero-image.webp"
-        imagesrcset="assets/images/hero-image-900.webp 900w, assets/images/hero-image.webp 1498w"
+  <link rel="preload" as="image" href="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/hero-image"
+        imagesrcset="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/hero-image-900 900w, https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/hero-image 1498w"
         imagesizes="(max-width: 900px) 100vw, 60vw" type="image/webp">
 
   <link rel="stylesheet" href="css/variables.css">
@@ -35,7 +36,7 @@
   <header class="site-header">
     <nav class="nav container" aria-label="Main">
       <a class="nav__logo" href="index.html" aria-label="ASR Design Space home">
-        <img src="assets/images/logo.svg" alt="ASR Design Space" width="1199" height="350">
+        <img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/images/logo.svg" alt="ASR Design Space" width="1199" height="350">
       </a>
 
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
@@ -92,9 +93,9 @@
         <div class="hero__visual">
           <picture>
             <source type="image/webp"
-                    srcset="assets/images/hero-image-900.webp 900w, assets/images/hero-image.webp 1498w"
+                    srcset="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/hero-image-900 900w, https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/hero-image 1498w"
                     sizes="(max-width: 900px) 100vw, 60vw">
-            <img class="hero__image" src="assets/images/hero-image.png"
+            <img class="hero__image" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/hero-image"
                  alt="A laptop on a dark desk showing the ASR Design Space About page, beside a coffee mug, books, a phone and a plant"
                  width="1498" height="1050" fetchpriority="high" decoding="async">
           </picture>
@@ -132,84 +133,84 @@
           <ul class="services__track" id="services-track" tabindex="0">
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/consultation.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/consultation.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">Consultation</h3>
               <p class="service-card__text">Expert guidance for better UI/UX.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/user-research.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/user-research.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">User Research</h3>
               <p class="service-card__text">Interviews, surveys and user behaviours.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/usability-testing.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/usability-testing.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">Usability Testing</h3>
               <p class="service-card__text">Test, improve, repeat.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/ux-audits.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/ux-audits.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">UX Audits</h3>
               <p class="service-card__text">Data-driven design decisions.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/branding.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/branding.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">Branding</h3>
               <p class="service-card__text">Logos, brand names and identity design.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/ui-ux-design.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/ui-ux-design.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">UI/UX Design</h3>
               <p class="service-card__text">Mobile apps and website design.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/web-development.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/web-development.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">Web Development</h3>
               <p class="service-card__text">Blogs, portfolios and e-commerce.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/backend-setup.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/backend-setup.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">Backend Setup</h3>
               <p class="service-card__text">Forms, logins and dynamic content.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/cms-integration.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/cms-integration.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">CMS Integration</h3>
               <p class="service-card__text">Manage your content with ease.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/launch-setup.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/launch-setup.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">Launch Setup</h3>
               <p class="service-card__text">Domain, DNS, email and hosting setup.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/digital-marketing.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/digital-marketing.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">Digital Marketing</h3>
               <p class="service-card__text">Social media, ads and SEO essentials.</p>
             </li>
             <li class="service-card">
               <span class="service-card__icon" aria-hidden="true">
-                <img src="assets/icons/services/maintenance.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/v2/asr-design-space/icons/services/maintenance.svg" alt="" width="36" height="36" loading="lazy" decoding="async">
               </span>
               <h3 class="service-card__title">Maintenance</h3>
               <p class="service-card__text">Website updates, fixes and support.</p>
@@ -232,7 +233,7 @@
             <li class="project-card">
               <div class="project-card__media" style="--cover-pos: 62% 45%">
                 <!-- Cover image: the SAME file is used as this project's case-study hero (projects/qehs-vault/index.html). Change both together. -->
-                <img src="assets/images/projects/qehs-vault/hero-laptop.webp" srcset="assets/images/projects/qehs-vault/hero-laptop-800.webp 800w, assets/images/projects/qehs-vault/hero-laptop.webp 1536w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 300px" alt="The QEHS Vault website on a laptop" width="1536" height="1024" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/qehs-vault/hero-laptop" srcset="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/qehs-vault/hero-laptop-800 800w, https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/qehs-vault/hero-laptop 1536w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 300px" alt="The QEHS Vault website on a laptop" width="1536" height="1024" loading="lazy" decoding="async">
               </div>
               <div class="project-card__body">
                 <div class="project-card__head">
@@ -245,7 +246,7 @@
             <li class="project-card">
               <div class="project-card__media" style="--cover-pos: 50% 42%">
                 <!-- Cover image: the SAME file is used as this project's case-study hero (projects/perfect-designs/index.html). Change both together. -->
-                <img src="assets/images/projects/perfect-designs/hero-laptop.webp" srcset="assets/images/projects/perfect-designs/hero-laptop-600.webp 600w, assets/images/projects/perfect-designs/hero-laptop.webp 1096w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 300px" alt="The Perfect Designs website on a laptop" width="1096" height="1012" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/perfect-designs/hero-laptop" srcset="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/perfect-designs/hero-laptop-600 600w, https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/perfect-designs/hero-laptop 1096w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 300px" alt="The Perfect Designs website on a laptop" width="1096" height="1012" loading="lazy" decoding="async">
               </div>
               <div class="project-card__body">
                 <div class="project-card__head">
@@ -258,7 +259,7 @@
             <li class="project-card">
               <div class="project-card__media" style="--cover-pos: 50% 50%">
                 <!-- Cover image: the SAME file is used as this project's case-study hero (projects/zay-couture/index.html). Change both together. -->
-                <img src="assets/images/projects/zay-couture/packaging-box.webp" srcset="assets/images/projects/zay-couture/packaging-box-1000.webp 1000w, assets/images/projects/zay-couture/packaging-box.webp 2048w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 300px" alt="Black Zay Couture gift box with the gold seal" width="2048" height="1372" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/zay-couture/packaging-box" srcset="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/zay-couture/packaging-box-1000 1000w, https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/zay-couture/packaging-box 2048w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 300px" alt="Black Zay Couture gift box with the gold seal" width="2048" height="1372" loading="lazy" decoding="async">
               </div>
               <div class="project-card__body">
                 <div class="project-card__head">
@@ -271,7 +272,7 @@
             <li class="project-card">
               <div class="project-card__media" style="--cover-pos: 50% 38%">
                 <!-- Cover image: the SAME file is used as this project's case-study hero (projects/masjidurrahman/index.html). Change both together. -->
-                <img src="assets/images/projects/masjid-ur-rahman/hero-phones.webp" srcset="assets/images/projects/masjid-ur-rahman/hero-phones-640.webp 640w, assets/images/projects/masjid-ur-rahman/hero-phones.webp 1230w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 300px" alt="Two phones showing the redesigned Masjid-ur Rahman website" width="1230" height="1330" loading="lazy" decoding="async">
+                <img src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/masjid-ur-rahman/hero-phones" srcset="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/masjid-ur-rahman/hero-phones-640 640w, https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/projects/masjid-ur-rahman/hero-phones 1230w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 300px" alt="Two phones showing the redesigned Masjid-ur Rahman website" width="1230" height="1330" loading="lazy" decoding="async">
               </div>
               <div class="project-card__body">
                 <div class="project-card__head">
@@ -310,7 +311,7 @@
                supplied on 26 Oct 2026 (the live site said "3+ Freelance Years"). Icons: assets/icons/about/ -->
           <li class="info-card">
             <div class="info-card__top">
-              <img class="info-card__icon" src="assets/icons/about/target.svg" alt="" width="24" height="24">
+              <img class="info-card__icon" src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/about/target.svg" alt="" width="24" height="24">
               <p class="info-card__label">Projects Completed</p>
             </div>
             <p class="info-card__value">20+</p>
@@ -318,7 +319,7 @@
 
           <li class="info-card">
             <div class="info-card__top">
-              <img class="info-card__icon" src="assets/icons/about/star.svg" alt="" width="25" height="24">
+              <img class="info-card__icon" src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/about/star.svg" alt="" width="25" height="24">
               <p class="info-card__label">Years of Experience</p>
             </div>
             <p class="info-card__value">5+</p>
@@ -326,7 +327,7 @@
 
           <li class="info-card info-card--stack">
             <div class="info-card__top">
-              <img class="info-card__icon" src="assets/icons/about/stack.svg" alt="" width="25" height="24">
+              <img class="info-card__icon" src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/about/stack.svg" alt="" width="25" height="24">
               <p class="info-card__label">Tech Stack</p>
               <!-- Pause / play for the moving icons (shown by js/ticker.js) -->
               <button class="ticker-pause" type="button" aria-pressed="false" aria-controls="tech-ticker" data-ticker-pause hidden>
@@ -341,42 +342,42 @@
             <div class="tech-ticker" id="tech-ticker" data-ticker>
               <div class="tech-ticker__track">
                 <ul class="tech-list" aria-label="Tools and technologies I use">
-                  <li><img src="assets/icons/tech/figma.svg" alt="Figma" title="Figma" width="21" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/sketch.svg" alt="Sketch" title="Sketch" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/framer.svg" alt="Framer" title="Framer" width="20" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/photoshop.svg" alt="Adobe Photoshop" title="Adobe Photoshop" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/canva.svg" alt="Canva" title="Canva" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/html5.svg" alt="HTML5" title="HTML5" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/css3.svg" alt="CSS3" title="CSS3" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/javascript.svg" alt="JavaScript" title="JavaScript" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/react.svg" alt="React" title="React" width="35" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/bootstrap.svg" alt="Bootstrap" title="Bootstrap" width="36" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/wordpress.svg" alt="WordPress" title="WordPress" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/woocommerce.svg" alt="WooCommerce" title="WooCommerce" width="44" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/github.svg" alt="GitHub" title="GitHub" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/jira.svg" alt="Jira" title="Jira" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/notion.svg" alt="Notion" title="Notion" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/claude.svg" alt="Claude" title="Claude" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/figma.svg" alt="Figma" title="Figma" width="21" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/sketch.svg" alt="Sketch" title="Sketch" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/framer.svg" alt="Framer" title="Framer" width="20" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/photoshop.svg" alt="Adobe Photoshop" title="Adobe Photoshop" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/canva.svg" alt="Canva" title="Canva" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/html5.svg" alt="HTML5" title="HTML5" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/css3.svg" alt="CSS3" title="CSS3" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/javascript.svg" alt="JavaScript" title="JavaScript" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/react.svg" alt="React" title="React" width="35" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/bootstrap.svg" alt="Bootstrap" title="Bootstrap" width="36" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/wordpress.svg" alt="WordPress" title="WordPress" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/woocommerce.svg" alt="WooCommerce" title="WooCommerce" width="44" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/github.svg" alt="GitHub" title="GitHub" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/jira.svg" alt="Jira" title="Jira" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/notion.svg" alt="Notion" title="Notion" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/chatgpt.svg" alt="ChatGPT" title="ChatGPT" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/claude.svg" alt="Claude" title="Claude" width="30" height="30" decoding="async"></li>
                 </ul>
                 <ul class="tech-list tech-list--copy" aria-hidden="true">
-                  <li><img src="assets/icons/tech/figma.svg" alt="" title="Figma" width="21" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/sketch.svg" alt="" title="Sketch" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/framer.svg" alt="" title="Framer" width="20" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/photoshop.svg" alt="" title="Adobe Photoshop" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/canva.svg" alt="" title="Canva" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/html5.svg" alt="" title="HTML5" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/css3.svg" alt="" title="CSS3" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/javascript.svg" alt="" title="JavaScript" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/react.svg" alt="" title="React" width="35" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/bootstrap.svg" alt="" title="Bootstrap" width="36" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/wordpress.svg" alt="" title="WordPress" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/woocommerce.svg" alt="" title="WooCommerce" width="44" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/github.svg" alt="" title="GitHub" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/jira.svg" alt="" title="Jira" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/notion.svg" alt="" title="Notion" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/chatgpt.svg" alt="" title="ChatGPT" width="30" height="30" decoding="async"></li>
-                  <li><img src="assets/icons/tech/claude.svg" alt="" title="Claude" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/figma.svg" alt="" title="Figma" width="21" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/sketch.svg" alt="" title="Sketch" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/framer.svg" alt="" title="Framer" width="20" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/photoshop.svg" alt="" title="Adobe Photoshop" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/canva.svg" alt="" title="Canva" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/html5.svg" alt="" title="HTML5" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/css3.svg" alt="" title="CSS3" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/javascript.svg" alt="" title="JavaScript" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/react.svg" alt="" title="React" width="35" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/bootstrap.svg" alt="" title="Bootstrap" width="36" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/wordpress.svg" alt="" title="WordPress" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/woocommerce.svg" alt="" title="WooCommerce" width="44" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/github.svg" alt="" title="GitHub" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/jira.svg" alt="" title="Jira" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/notion.svg" alt="" title="Notion" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/chatgpt.svg" alt="" title="ChatGPT" width="30" height="30" decoding="async"></li>
+                  <li><img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/icons/tech/claude.svg" alt="" title="Claude" width="30" height="30" decoding="async"></li>
                 </ul>
               </div>
             </div>
@@ -412,7 +413,7 @@
             <ul class="testimonials__list">
             <li>
               <figure class="testimonial">
-                <img class="testimonial__photo" src="assets/images/testimonials/hassan-j.webp" alt="Portrait of Hassan J." width="96" height="96" decoding="async">
+                <img class="testimonial__photo" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/testimonials/hassan-j" alt="Portrait of Hassan J." width="96" height="96" decoding="async">
                 <div class="testimonial__body">
                   <blockquote class="testimonial__quote">
                     <p>“Ayisha is the best! ASR Designs brought our vision to life with ease and creativity. Highly recommended!”</p>
@@ -426,7 +427,7 @@
             </li>
             <li>
               <figure class="testimonial">
-                <img class="testimonial__photo" src="assets/images/testimonials/sarah-ahmed.webp" alt="Portrait of Sarah Ahmed" width="96" height="96" decoding="async">
+                <img class="testimonial__photo" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/testimonials/sarah-ahmed" alt="Portrait of Sarah Ahmed" width="96" height="96" decoding="async">
                 <div class="testimonial__body">
                   <blockquote class="testimonial__quote">
                     <p>“Ayisha redesigned our website beautifully, making it seamless and user-friendly. Her work is truly commendable!”</p>
@@ -440,7 +441,7 @@
             </li>
             <li>
               <figure class="testimonial">
-                <img class="testimonial__photo" src="assets/images/testimonials/michael-t.webp" alt="Portrait of Michael T." width="96" height="96" decoding="async">
+                <img class="testimonial__photo" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/testimonials/michael-t" alt="Portrait of Michael T." width="96" height="96" decoding="async">
                 <div class="testimonial__body">
                   <blockquote class="testimonial__quote">
                     <p>“Ayisha created a strong brand identity that perfectly reflects our vision. Her attention to detail is truly impressive!”</p>
@@ -454,7 +455,7 @@
             </li>
             <li>
               <figure class="testimonial">
-                <img class="testimonial__photo" src="assets/images/testimonials/emily-r.webp" alt="Portrait of Emily R." width="96" height="96" decoding="async">
+                <img class="testimonial__photo" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/testimonials/emily-r" alt="Portrait of Emily R." width="96" height="96" decoding="async">
                 <div class="testimonial__body">
                   <blockquote class="testimonial__quote">
                     <p>“Ayisha built a stunning, high-performing website that exceeded our expectations. Her front-end skills are outstanding!”</p>
@@ -470,7 +471,7 @@
             <ul class="testimonials__list testimonials__list--copy" aria-hidden="true">
             <li aria-hidden="true">
               <figure class="testimonial">
-                <img class="testimonial__photo" src="assets/images/testimonials/hassan-j.webp" alt="" width="96" height="96" decoding="async">
+                <img class="testimonial__photo" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/testimonials/hassan-j" alt="" width="96" height="96" decoding="async">
                 <div class="testimonial__body">
                   <blockquote class="testimonial__quote">
                     <p>“Ayisha is the best! ASR Designs brought our vision to life with ease and creativity. Highly recommended!”</p>
@@ -484,7 +485,7 @@
             </li>
             <li aria-hidden="true">
               <figure class="testimonial">
-                <img class="testimonial__photo" src="assets/images/testimonials/sarah-ahmed.webp" alt="" width="96" height="96" decoding="async">
+                <img class="testimonial__photo" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/testimonials/sarah-ahmed" alt="" width="96" height="96" decoding="async">
                 <div class="testimonial__body">
                   <blockquote class="testimonial__quote">
                     <p>“Ayisha redesigned our website beautifully, making it seamless and user-friendly. Her work is truly commendable!”</p>
@@ -498,7 +499,7 @@
             </li>
             <li aria-hidden="true">
               <figure class="testimonial">
-                <img class="testimonial__photo" src="assets/images/testimonials/michael-t.webp" alt="" width="96" height="96" decoding="async">
+                <img class="testimonial__photo" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/testimonials/michael-t" alt="" width="96" height="96" decoding="async">
                 <div class="testimonial__body">
                   <blockquote class="testimonial__quote">
                     <p>“Ayisha created a strong brand identity that perfectly reflects our vision. Her attention to detail is truly impressive!”</p>
@@ -512,7 +513,7 @@
             </li>
             <li aria-hidden="true">
               <figure class="testimonial">
-                <img class="testimonial__photo" src="assets/images/testimonials/emily-r.webp" alt="" width="96" height="96" decoding="async">
+                <img class="testimonial__photo" src="https://res.cloudinary.com/drtc6yecl/image/upload/f_auto,q_auto/asr-design-space/images/testimonials/emily-r" alt="" width="96" height="96" decoding="async">
                 <div class="testimonial__body">
                   <blockquote class="testimonial__quote">
                     <p>“Ayisha built a stunning, high-performing website that exceeded our expectations. Her front-end skills are outstanding!”</p>
@@ -557,7 +558,7 @@
         <!-- Column 1: brand + social -->
         <div class="footer-brand">
           <a class="footer-brand__logo" href="index.html" aria-label="ASR Design Space home">
-            <img src="assets/images/logo.svg" alt="ASR Design Space" width="1199" height="350" loading="lazy">
+            <img src="https://res.cloudinary.com/drtc6yecl/image/upload/asr-design-space/images/logo.svg" alt="ASR Design Space" width="1199" height="350" loading="lazy">
           </a>
           <p class="footer-brand__tagline">Design <span aria-hidden="true">|</span> Develop <span aria-hidden="true">|</span> Create Impact</p>
           <p class="footer-brand__text">I design and develop modern websites, brands and digital solutions that help businesses grow with purpose.</p>
