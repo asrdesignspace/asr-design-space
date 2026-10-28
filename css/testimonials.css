@@ -32,16 +32,24 @@
 .testimonials__track {
   display: flex;
   width: max-content;
+}
+
+/* Both copies of the list move left by exactly their own width, then start again.
+   Because the second copy sits right behind the first, the restart is invisible and
+   the loop never stops. (Measuring each list by its own width works the same in
+   every browser, unlike moving the whole track by half of its width.) */
+.testimonials__list {
   animation: testimonials-ticker 50s linear infinite; /* raise the seconds to slow it down */
 }
 
-.testimonials__ticker:hover .testimonials__track,
-.testimonials__ticker.is-paused .testimonials__track {
+.testimonials__ticker:hover .testimonials__list,
+.testimonials__ticker.is-paused .testimonials__list {
   animation-play-state: paused;
 }
 
 @keyframes testimonials-ticker {
-  to { transform: translateX(-50%); }
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
 
 .testimonials__list {
@@ -160,10 +168,10 @@
 
   .testimonials__track {
     width: auto;
-    animation: none;
   }
 
   .testimonials__list {
+    animation: none;
     display: grid;
     flex-shrink: 1;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
