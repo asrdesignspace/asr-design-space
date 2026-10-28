@@ -94,7 +94,14 @@
 
 /* ---------- Hero ---------- */
 .qv-hero {
+  position: relative;
+  overflow: clip; /* the enlarged hero image may extend past the content edge; never scroll sideways */
   padding-block: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.qv-hero__text {
+  position: relative;
+  z-index: 1; /* text stays above the image's faded edge */
 }
 
 .qv-hero__grid {
@@ -202,13 +209,22 @@
 
 /* the mockup's own dark edges fade into the page */
 .qv-hero__media {
+  display: block;
+  /* a bit bigger: wider than its column, reaching into the right-hand margin */
+  width: 122%;
+  max-width: none; /* lifts the site-wide picture { max-width: 100% } for this hero only */
+  margin-left: -8%;
+  /* blend into the page: an oval fade around the laptop, plus soft fades at every edge,
+     so the image's own background never shows as a rectangle */
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 12%, #000 92%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 8%, #000 86%, transparent 100%);
-  -webkit-mask-composite: source-in;
+    radial-gradient(ellipse 60% 62% at 54% 48%, #000 62%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 18%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%);
+  -webkit-mask-composite: source-in, source-in;
   mask-image:
-    linear-gradient(to right, transparent 0%, #000 12%, #000 92%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 8%, #000 86%, transparent 100%);
+    radial-gradient(ellipse 60% 62% at 54% 48%, #000 62%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 18%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 14%, #000 78%, transparent 100%);
   mask-composite: intersect;
 }
 
@@ -549,6 +565,11 @@
   .qv-overview,
   .qv-two { grid-template-columns: minmax(0, 1fr); }
 
+  .qv-hero__media {
+    width: 112%;
+    margin-left: -6%;
+  }
+
   .qv-overview > div { padding-right: 0; border-right: 0; }
 
   /* process becomes a vertical list */
@@ -584,6 +605,12 @@
 }
 
 @media (max-width: 640px) {
+  /* phones: full column width so the ISO cards on the left stay clear of the faded edge */
+  .qv-hero__media {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .qv-features { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
   .qv-results,
   .qv-ds { grid-template-columns: minmax(0, 1fr); }
