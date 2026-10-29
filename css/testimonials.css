@@ -39,12 +39,22 @@
    the loop never stops. (Measuring each list by its own width works the same in
    every browser, unlike moving the whole track by half of its width.) */
 .testimonials__list {
-  animation: testimonials-ticker 50s linear infinite; /* raise the seconds to slow it down */
+  animation: testimonials-ticker 50s linear infinite; /* fallback without JavaScript; the speed is set in index.html (data-ticker-motion) */
 }
 
 .testimonials__ticker:hover .testimonials__list,
 .testimonials__ticker.is-paused .testimonials__list {
   animation-play-state: paused;
+}
+
+/* With JavaScript, js/ticker.js moves the whole track as one piece instead
+   (seconds per loop in data-ticker-motion), so the CSS animation is switched off. */
+.testimonials__ticker.is-js .testimonials__list {
+  animation: none;
+}
+
+.testimonials__ticker.is-js .testimonials__track {
+  will-change: transform;
 }
 
 @keyframes testimonials-ticker {
