@@ -1,0 +1,262 @@
+/* =========================================================
+   Reddit landing page redesign (projects/reddit/index.html)
+   A personal concept project. Uses the shared case-study.css
+   template on a white page with orange accents, following the
+   supplied case study PDF.
+   ========================================================= */
+
+.cs--rdt {
+  --rdt-orange: #ff6101;       /* headings, pills and chevrons in the PDF (3.0:1 on white: large text only) */
+  --rdt-brand: #ff4500;        /* Reddit orange used inside the designs */
+  --rdt-orange-text: #b83d00;  /* darker orange for small text (passes 4.5:1) */
+  --cs-paper: #ffffff;
+  --cs-ink: #111111;
+  --cs-gold: var(--rdt-brand); /* the template uses this for focus outlines */
+  --cs-body: var(--font-sans);
+}
+
+.cs--rdt main {
+  color: var(--cs-ink);
+}
+
+.rdt-section {
+  padding-block: clamp(3rem, 7vw, 5.5rem) 0;
+}
+
+.rdt-title {
+  margin: 0 0 clamp(1.25rem, 3vw, 2rem);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--rdt-orange);
+}
+
+.rdt-title--center { text-align: center; }
+
+.rdt-text {
+  max-width: 48rem;
+  margin: 0 auto;
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.15rem);
+  line-height: 1.85;
+  text-align: center;
+  color: #222222;
+}
+
+.rdt-figure {
+  margin: 0;
+}
+
+.rdt-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* chevron bullets, as in the PDF */
+.rdt-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rdt-list li {
+  position: relative;
+  margin-top: 0.9rem;
+  padding-left: 1.4rem;
+  line-height: 1.6;
+  color: #222222;
+}
+
+.rdt-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.55em;
+  width: 0.45em;
+  height: 0.45em;
+  border-top: 2px solid var(--rdt-orange);
+  border-right: 2px solid var(--rdt-orange);
+  transform: rotate(45deg);
+}
+
+.rdt-list strong {
+  font-weight: 700;
+  font-size: 1.08em;
+  color: var(--cs-ink);
+}
+
+/* ---------- 1. Hero ---------- */
+.rdt-hero {
+  max-width: 1440px;
+  margin-inline: auto;
+  overflow: hidden;
+  /* white on the left melting into peach on the right (sampled from the PDF) */
+  background: linear-gradient(100deg, #ffffff 0%, #fff7f2 30%, #ffe2ce 62%, #ffccaa 100%);
+  border-radius: 0 0 clamp(20px, 3vw, 36px) clamp(20px, 3vw, 36px);
+  box-shadow: 0 22px 40px -24px rgba(0, 0, 0, 0.28);
+}
+
+.rdt-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  min-height: clamp(320px, 40vw, 560px);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.rdt-hero__logo {
+  margin: 0;
+}
+
+.rdt-hero__logo img {
+  display: block;
+  width: clamp(120px, 14vw, 200px);
+  height: auto;
+  mix-blend-mode: multiply; /* the logo's near-white background disappears into the gradient */
+}
+
+.rdt-hero__title {
+  margin: clamp(1rem, 2.5vw, 1.6rem) 0 0;
+  font-size: clamp(2rem, 1.3rem + 2.4vw, 3.05rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--cs-ink);
+}
+
+.rdt-hero__title span {
+  display: block;
+  margin-top: clamp(0.75rem, 2vw, 1.5rem);
+  color: var(--rdt-orange);
+}
+
+.rdt-hero__note {
+  display: inline-block;
+  margin: clamp(1.25rem, 3vw, 1.75rem) 0 0;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid rgba(184, 61, 0, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--rdt-orange-text);
+}
+
+.rdt-hero__media img {
+  width: min(118%, 660px);
+  max-width: none;
+  margin-right: -6%;
+  margin-left: auto;
+}
+
+/* ---------- 2. Meet the app ---------- */
+.rdt-devices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* ---------- 3. Problem statement ---------- */
+.rdt-problem {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.rdt-problem > p {
+  margin: 0;
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.15rem);
+  color: #222222;
+}
+
+.rdt-problem .rdt-list li {
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.12rem);
+}
+
+/* ---------- 4. My process ---------- */
+.rdt-steps {
+  margin: clamp(1rem, 3vw, 2rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rdt-step {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 1rem clamp(1.5rem, 5vw, 4rem);
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+}
+
+.rdt-pill {
+  justify-self: start;
+  margin: 0;
+  padding: 0.55rem 1.25rem;
+  border: 2px solid var(--rdt-orange);
+  border-radius: 999px;
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--cs-ink);
+}
+
+.rdt-step__body > p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #222222;
+}
+
+.rdt-step__body .rdt-list li {
+  font-size: 0.95rem;
+}
+
+/* ---------- 5. User needs ---------- */
+.rdt-needs .rdt-list li {
+  margin-top: 1.1rem;
+  font-size: 0.98rem;
+}
+
+/* ---------- 6. User interface ---------- */
+.rdt-ui {
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.rdt-ui .rdt-figure img {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+  .rdt-hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    text-align: center;
+  }
+
+  .rdt-hero__logo img,
+  .rdt-hero__media img {
+    margin-inline: auto;
+  }
+
+  .rdt-hero__media img {
+    width: min(100%, 560px);
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .rdt-devices,
+  .rdt-step {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rdt-step {
+    gap: 0.9rem;
+  }
+
+  .rdt-text {
+    text-align: left;
+  }
+}
