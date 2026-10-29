@@ -1,0 +1,304 @@
+/* =========================================================
+   EcoSphere case study (projects/eco-sphere/index.html)
+   Uses the shared case-study.css template; this file adds the
+   EcoSphere brand tokens and its own sections, following the
+   supplied case study: a white page with black rounded panels.
+   ========================================================= */
+
+/* ---------- Brand font (self-hosted, SIL Open Font License) ---------- */
+@font-face {
+  font-family: "Baumans";
+  src: url("../assets/fonts/baumans-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* ---------- EcoSphere brand tokens (hex values sampled from the supplied PDF) ---------- */
+.cs--eco {
+  --eco-blue: #008dff;
+  --eco-green: #38be03;
+  --eco-black: #000000;
+  --eco-green-text: #237a00;   /* darker green for small text on white (passes contrast) */
+  --cs-ink: #111111;
+  --cs-gold: var(--eco-blue);  /* the template uses this for focus outlines */
+  --cs-paper: #ffffff;
+  --cs-display: "Baumans", var(--font-sans);
+  --cs-body: var(--font-sans);
+}
+
+.cs--eco .cs-eyebrow {
+  color: var(--eco-green-text);
+}
+
+.cs--eco .cs-text {
+  color: #3f3f3f;
+}
+
+/* ---------- 1. Hero ---------- */
+.eco-hero picture,
+.eco-hero img {
+  display: block;
+  width: 100%;
+}
+
+.eco-hero img {
+  height: auto;
+  max-height: 720px;
+  object-fit: cover;           /* very wide screens: trim top/bottom, keep the badge centred */
+  object-position: center 45%;
+  border-radius: 0 0 clamp(18px, 2.4vw, 32px) clamp(18px, 2.4vw, 32px);
+  box-shadow: 0 18px 40px -26px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- 2. Overview ---------- */
+.eco-title {
+  margin: 0;
+  font-family: var(--cs-display);
+  font-size: clamp(2.4rem, 1.8rem + 2.4vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+/* brand name in its own colours (logotypes are exempt from contrast rules) */
+.eco-green { color: var(--eco-green); }
+.eco-blue  { color: var(--eco-blue); }
+
+.eco-subtitle {
+  margin: 1rem 0 0;
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.65rem);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--cs-ink);
+}
+
+/* ---------- 3. Logo construction ---------- */
+.eco-logos {
+  padding-top: clamp(1rem, 3vw, 2rem);
+}
+
+.eco-logos figure {
+  margin: 0;
+}
+
+.eco-logos__item img {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+}
+
+/* the second version sits to the right, as in the reference */
+.eco-logos__item--right {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: clamp(1.5rem, 4vw, 2.5rem) !important;
+}
+
+/* ---------- Shared panel styles ---------- */
+.eco-heading {
+  margin: 0;
+  font-family: var(--cs-body);
+  font-size: clamp(1.9rem, 1.5rem + 1.5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+/* ---------- 4. Colour ---------- */
+.eco-color {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  max-width: 1440px;
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--eco-black);
+  color: #ffffff;
+  border-top-left-radius: clamp(24px, 4vw, 48px);
+}
+
+.eco-color__text {
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 6vw, 5rem);
+}
+
+.eco-subheading {
+  margin: 1.6rem 0 0.75rem;
+  font-family: var(--cs-body);
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.eco-heading + .eco-subheading {
+  margin-top: 1.1rem;
+}
+
+.eco-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.eco-list li {
+  margin-top: 0.6rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.eco-list strong {
+  color: #ffffff;
+}
+
+/* four tall colour bars on the right, labelled at the bottom */
+.eco-swatches {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eco-swatches li {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  min-height: 260px;
+  padding: 1rem 0.75rem;
+  background: var(--sw);
+  color: #ffffff;
+}
+
+/* black needs an edge on the black panel; white bar gets dark text */
+.eco-swatch--black {
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.18), inset -1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+/* dark labels on the light bars so the small text stays readable */
+.eco-swatches li:nth-child(1),
+.eco-swatches li:nth-child(2),
+.eco-swatch--white {
+  color: #111111;
+}
+
+.eco-swatch__name {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.eco-swatch__hex {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+/* ---------- 5. Typography ---------- */
+.eco-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
+  overflow: hidden;
+  background: var(--eco-black);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0 0 clamp(20px, 3vw, 36px) clamp(20px, 3vw, 36px);
+  box-shadow: 0 26px 44px -30px rgba(0, 0, 0, 0.6);
+}
+
+.eco-type__name {
+  margin: clamp(2rem, 6vw, 4.5rem) 0 0;
+  font-family: var(--cs-display);
+  font-size: clamp(3rem, 2rem + 4vw, 5.4rem);
+  line-height: 1;
+}
+
+.eco-type__glyph {
+  margin: 0;
+  font-family: var(--cs-display);
+  font-size: clamp(8rem, 4rem + 16vw, 20rem);
+  line-height: 0.85;
+  color: #ffffff;
+}
+
+/* ---------- 6. Brand applications ---------- */
+.eco-apps__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 1.75rem);
+  max-width: 1000px;
+}
+
+.eco-app {
+  display: flex;               /* flex (not grid) so the 100%-wide image can't collapse to zero */
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  overflow: hidden;
+  background: var(--eco-black);
+  border-radius: clamp(18px, 2.5vw, 28px);
+  box-shadow: 0 22px 40px -26px rgba(0, 0, 0, 0.55);
+}
+
+.eco-app img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.eco-app--wide img {
+  max-width: 560px;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+  .eco-color {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .eco-swatches li {
+    min-height: 140px;
+  }
+
+  .eco-apps__grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+  }
+
+  .eco-app:not(.eco-app--wide) img {
+    max-width: 360px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .eco-logos__item img {
+    width: 100%;
+  }
+
+  .eco-logos__item--right {
+    justify-content: flex-start;
+  }
+
+  .eco-swatches li {
+    min-height: 110px;
+    padding: 0.7rem 0.5rem;
+  }
+
+  .eco-swatch__name { font-size: 0.85rem; }
+  .eco-swatch__hex  { font-size: 0.72rem; }
+
+  /* the big "Aa" moves under the font name */
+  .eco-type {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .eco-type__glyph {
+    align-self: flex-end;
+    font-size: clamp(7rem, 40vw, 11rem);
+  }
+}
