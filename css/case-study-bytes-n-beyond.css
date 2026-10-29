@@ -1,0 +1,430 @@
+/* =========================================================
+   Bytes & Beyond case study (projects/bytes-n-beyond/index.html)
+   Uses the shared case-study.css template (container, back/next row)
+   on a dark canvas that follows the supplied case study PDF.
+   ========================================================= */
+
+/* ---------- Fonts shown in the Design System (self-hosted, SIL OFL) ---------- */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../assets/fonts/playfair-display-latin-900.woff2") format("woff2");
+  font-weight: 900;
+  font-display: swap;
+}
+/* Lato 400/700 are declared in case-study.css */
+
+/* ---------- Tokens (colours from the case study's own palette) ---------- */
+.cs--bnb {
+  --bnb-primary: #ffa199;
+  --bnb-secondary: #00a795;
+  --bnb-hover: #007467;
+  --bnb-section: #2b2629;
+  --bnb-bg: #181618;
+  --bnb-accent: #ff878d;     /* heading accent used throughout the PDF */
+  --bnb-panel: #202020;
+  --cs-paper: #0d0d0d;
+  --cs-ink: #f5f2f2;
+  --cs-gold: var(--bnb-accent); /* focus outlines in the template */
+  --cs-body: var(--font-sans);
+}
+
+.cs--bnb main {
+  background: var(--cs-paper);
+  color: var(--cs-ink);
+}
+
+.cs--bnb .cs-next { background: transparent; border-top: 1px solid rgba(255, 228, 228, 0.08); }
+.cs--bnb .cs-next__link { color: var(--cs-ink); }
+
+.bnb-section {
+  padding-block: clamp(3rem, 7vw, 5.5rem) 0;
+}
+
+.bnb-title {
+  margin: 0 0 clamp(1.75rem, 4vw, 3rem);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--cs-ink);
+}
+
+.bnb-title--center { text-align: center; }
+.bnb-title span { color: var(--bnb-accent); }
+
+.bnb-subtitle {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+  font-weight: 700;
+  color: var(--cs-ink);
+}
+
+.bnb-figure {
+  margin: 0;
+}
+
+.bnb-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- 1. Hero ---------- */
+.bnb-hero {
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.bnb-hero__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 4rem);
+  border-radius: clamp(20px, 3vw, 32px);
+  background: var(--bnb-panel);
+}
+
+.bnb-hero__title {
+  margin: 0;
+}
+
+.bnb-hero__title img {
+  display: block;
+  width: min(100%, 380px);
+  height: auto;
+}
+
+.bnb-hero__kicker {
+  margin: clamp(1.25rem, 3vw, 2.25rem) 0 0;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 2rem);
+  font-weight: 700;
+  color: var(--cs-ink);
+}
+
+/* ---------- 2. Project overview ---------- */
+.bnb-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+/* the laptop's soft pink glow was cut off at the image edges: fade them into the page */
+.bnb-overview .bnb-figure img {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.bnb-overview__text h3 {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--bnb-accent);
+}
+
+.bnb-overview__text h3:not(:first-child) {
+  margin-top: 1.75rem;
+}
+
+.bnb-overview__text p,
+.bnb-overview__text li {
+  margin: 0.8rem 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(245, 242, 242, 0.86);
+}
+
+.bnb-overview__text ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+  list-style: disc; /* the site reset removes markers; the PDF shows bullets here */
+}
+
+.bnb-overview__text li {
+  margin-top: 0.4rem;
+}
+
+.bnb-facts {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.8fr);
+  gap: clamp(1rem, 3vw, 1.75rem);
+  max-width: 880px;
+  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bnb-fact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: clamp(1.4rem, 3vw, 2rem) 1.25rem;
+  border-radius: clamp(18px, 2.5vw, 28px);
+  background: var(--bnb-panel);
+  text-align: center;
+}
+
+.bnb-fact__label {
+  margin: 0;
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--bnb-accent);
+}
+
+.bnb-fact__value {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--cs-ink);
+}
+
+.bnb-fact img {
+  display: block;
+  width: min(100%, 340px);
+  height: auto;
+}
+
+/* ---------- 3-4. Process and site map ---------- */
+.bnb-process img {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* the site map's labels are small: on narrow screens it scrolls sideways
+   inside its own box instead of shrinking until it can't be read */
+.bnb-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.bnb-scroll img {
+  min-width: 760px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.bnb-scroll__hint {
+  display: none;
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: rgba(245, 242, 242, 0.6);
+}
+
+/* ---------- 5. Design system ---------- */
+.bnb-ds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+}
+
+.bnb-ds__full {
+  grid-column: 1 / -1;
+}
+
+.bnb-type {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.bnb-type__card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 0.5rem 1.25rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-radius: 14px;
+  background: linear-gradient(160deg, #191313 0%, #251f1f 55%, #3d3838 100%);
+}
+
+.bnb-type__glyph {
+  margin: 0;
+  font-size: clamp(4rem, 3rem + 3vw, 5.5rem);
+  line-height: 0.95;
+  color: #ffffff;
+}
+
+.bnb-type__meta p {
+  margin: 0;
+  line-height: 1.35;
+  color: #ffffff;
+}
+
+.bnb-type__name { font-size: clamp(1.2rem, 1rem + 0.6vw, 1.5rem); }
+.bnb-type__weight { margin-top: 0.3rem !important; font-size: 1rem; }
+.bnb-type__sample { margin-top: 0.4rem !important; font-size: 1rem; }
+
+.bnb-type__sizes {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0.75rem 0 0;
+  color: #ffffff;
+}
+
+.bnb-type--playfair .bnb-type__glyph,
+.bnb-type--playfair .bnb-type__meta,
+.bnb-type--playfair .bnb-type__sizes {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+}
+
+.bnb-type--playfair .bnb-type__sample,
+.bnb-type--playfair .bnb-type__sizes {
+  font-weight: 400;
+  font-family: Georgia, "Playfair Display", serif;
+}
+
+.bnb-type--lato,
+.bnb-type--lato .bnb-type__glyph {
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+}
+
+.bnb-type--lato .bnb-type__glyph,
+.bnb-type--lato .bnb-type__name { font-weight: 700; }
+
+.bnb-sizes__s { font-size: 0.8rem; }
+.bnb-sizes__m { font-size: 1.1rem; }
+.bnb-sizes__l { font-size: 1.75rem; }
+.bnb-sizes__xl { font-size: 2.3rem; }
+
+/* colour swatches */
+.bnb-swatches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem 1rem;
+  max-width: 360px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bnb-swatch__chip {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 48px;
+  padding: 0.3rem 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  background: var(--sw);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.bnb-swatch--light .bnb-swatch__chip { color: #2b2629; }
+
+.bnb-swatch__name {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1rem;
+  color: var(--cs-ink);
+}
+
+.bnb-ds .bnb-figure img {
+  max-width: 420px;
+}
+
+/* ---------- 6. Wireframes ---------- */
+.bnb-wireframes {
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.bnb-wireframes img {
+  border-radius: 4px;
+}
+
+/* ---------- 7. UI screens ---------- */
+.bnb-screens {
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  padding-block: clamp(3rem, 7vw, 5rem);
+  background: linear-gradient(180deg, #191313 0%, #1d1516 45%, #322a2a 100%);
+  border-radius: clamp(28px, 5vw, 56px) clamp(28px, 5vw, 56px) clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px);
+}
+
+.bnb-screens__cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.bnb-screens__col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* the second column starts a little lower, as in the reference */
+.bnb-screens__col--offset {
+  padding-top: clamp(0rem, 4vw, 3rem);
+}
+
+.bnb-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 44px -26px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+  .bnb-hero__panel,
+  .bnb-overview,
+  .bnb-ds,
+  .bnb-wireframes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bnb-hero__panel {
+    text-align: center;
+  }
+
+  .bnb-hero__title img {
+    margin-inline: auto;
+  }
+
+  .bnb-wireframes .bnb-figure:first-child img {
+    max-width: 360px;
+    margin-inline: auto;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .bnb-facts,
+  .bnb-type,
+  .bnb-screens__cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bnb-screens__col--offset {
+    padding-top: 0;
+  }
+
+  .bnb-scroll__hint {
+    display: block;
+  }
+
+  .bnb-swatches {
+    max-width: none;
+  }
+}
