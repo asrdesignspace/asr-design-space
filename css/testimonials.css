@@ -79,6 +79,10 @@
 .testimonials__list > li {
   display: flex; /* every card stretches to the tallest one */
   flex: 0 0 var(--t-card);
+  /* Safari works out each list's width from its cards' natural content width
+     and ignores the flex size above, which left a long blank gap after every
+     set on iPhone. Giving the card the same plain width fixes the measurement. */
+  width: var(--t-card);
 }
 
 /* ---------- Card ---------- */
@@ -269,6 +273,10 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     width: 100%;
     padding: 0;
+  }
+
+  .testimonials__list > li {
+    width: auto; /* the grid sizes the cards */
   }
 
   .testimonials__list--copy {
