@@ -20,10 +20,16 @@
 
 /* ---------- Ticker (moves right to left) ---------- */
 .testimonials__ticker {
+  /* Desktop: about three cards in view. One set of four cards is always wider
+     than the visible area, so the loop never shows a gap.
+     (Tablet and mobile sizes are in the Responsive section below.) */
   --t-gap: 1.25rem;
-  /* every card is about a third of the content width, so one set of three
-     is always wider than the visible area and the loop never shows a gap */
   --t-card: clamp(280px, 30vw, 400px);
+  /* Seconds per loop if JavaScript is off. With JavaScript, js/ticker.js sets
+     the exact time for the screen size so the speed is always the same
+     (data-ticker-speed in index.html, pixels per second). */
+  --t-duration: 49s;
+  container-type: inline-size; /* lets cards size themselves from the ticker's width (cqi units) */
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
@@ -35,12 +41,12 @@
    repeat is invisible: no gap, no jump, no pause. Because one single animation
    moves both lists together, they can never drift apart.
 
-   Speed: seconds per loop. Set it in index.html with data-ticker-motion="50"
-   (js/ticker.js copies it into --t-duration); 50s is used if JavaScript is off. */
+   Speed: set in index.html with data-ticker-speed="34" (pixels per second).
+   js/ticker.js turns it into --t-duration for the current screen size. */
 .testimonials__track {
   display: flex;
   width: max-content;
-  animation: testimonials-ticker var(--t-duration, 50s) linear infinite;
+  animation: testimonials-ticker var(--t-duration) linear infinite;
 }
 
 /* Pause / play button */
@@ -146,7 +152,48 @@
   color: var(--text-secondary);
 }
 
-/* ---------- Responsive ---------- */
+/* ---------- Responsive ----------
+   Card widths use cqi = 1% of the ticker's width, so every card (and its
+   copy) is exactly the same size and the loop stays seamless. */
+
+/* Tablet and touch screens: a finger-sized pause / play button (44px).
+   Only the testimonials button; the Tech Stack button is unchanged. */
+@media (max-width: 1024px), (pointer: coarse) {
+  .testimonials .ticker-pause {
+    width: 44px;
+    height: 44px;
+  }
+
+  .testimonials .ticker-pause svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Tablet (641px–1024px): about 1.5 to 2 cards in view */
+@media (max-width: 1024px) {
+  .testimonials__ticker {
+    --t-gap: 1.125rem;
+    --t-card: clamp(300px, calc((100cqi - var(--t-gap)) / 1.6), 460px);
+    --t-duration: 54s;
+  }
+
+  .testimonial {
+    gap: 1.125rem;
+    padding: clamp(1.125rem, 2.4vw, 1.5rem);
+  }
+
+  .testimonial__photo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .testimonial__quote p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile (640px and below): one card, with the edge of the next one peeking in */
 @media (max-width: 640px) {
   .testimonials__header {
     flex-direction: column;
@@ -155,16 +202,51 @@
   }
 
   .testimonials__ticker {
-    --t-gap: 1rem;
+    --t-gap: 0.875rem;
+    --t-card: calc(100cqi - 3.5rem); /* leaves about 40px of the next card visible */
+    --t-duration: 40s;
   }
 
   .testimonial {
     gap: 1rem;
+    padding: 1.25rem;
   }
 
   .testimonial__photo {
     width: 64px;
     height: 64px;
+  }
+}
+
+/* Small phones (480px and below): photo above the text, so the quote gets
+   the card's full width instead of a narrow column */
+@media (max-width: 480px) {
+  .testimonial {
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 1.125rem 1.125rem 1.25rem;
+  }
+
+  .testimonial__photo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .testimonial__quote p {
+    font-size: 0.975rem;
+    line-height: 1.55;
+  }
+
+  .testimonial__author {
+    margin-top: 0.75rem;
+  }
+
+  .testimonial__name {
+    font-size: 1rem;
+  }
+
+  .testimonial__role {
+    font-size: 0.9rem;
   }
 }
 

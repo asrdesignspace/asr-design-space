@@ -4,11 +4,13 @@
    1. Pause / play buttons. Each button names its ticker with
       aria-controls="<ticker id>" and toggles .is-paused on it.
 
-   2. Speed for tickers marked data-ticker-motion (the
-      testimonials). The value is the seconds one loop takes; it
-      is passed to the CSS animation in testimonials.css, which
-      does all the moving. Without JavaScript, the CSS default
-      (50s) is used.
+   2. Same speed on every screen for tickers marked
+      data-ticker-speed (the testimonials). The value is pixels
+      per second. Cards are narrower on phones, so one loop is
+      shorter there; this measures one set of cards and sets the
+      loop time (--t-duration) to match. The CSS animation in
+      testimonials.css does all the moving — no timers here.
+      Without JavaScript, the CSS fallback times are used.
    ========================================================= */
 
 (function () {
@@ -32,9 +34,20 @@
     button.hidden = false;
   });
 
-  // ---------- 2. Speed for the CSS animation ----------
-  document.querySelectorAll("[data-ticker-motion]").forEach(function (ticker) {
-    var seconds = parseFloat(ticker.getAttribute("data-ticker-motion"));
-    if (seconds > 0) ticker.style.setProperty("--t-duration", seconds + "s");
+  // ---------- 2. Same speed on every screen ----------
+  document.querySelectorAll("[data-ticker-speed]").forEach(function (ticker) {
+    var speed = parseFloat(ticker.getAttribute("data-ticker-speed")); // pixels per second
+    var list = ticker.querySelector("ul");                            // one full set of cards
+    if (!(speed > 0) || !list) return;
+
+    function setDuration() {
+      var width = list.getBoundingClientRect().width;                 // one set, including its trailing gap
+      if (width > 0) ticker.style.setProperty("--t-duration", (width / speed).toFixed(2) + "s");
+    }
+
+    setDuration();
+    // runs again only when the cards change size (window resize, phone rotation)
+    if ("ResizeObserver" in window) new ResizeObserver(setDuration).observe(list);
+    else window.addEventListener("resize", setDuration);
   });
 })();
