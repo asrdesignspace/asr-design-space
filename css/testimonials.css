@@ -29,37 +29,36 @@
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 
+/* The track holds two identical lists side by side: the real cards, then a copy.
+   The WHOLE track moves left by half its width (exactly one list), then repeats.
+   At that moment the copy sits exactly where the first list started, so the
+   repeat is invisible: no gap, no jump, no pause. Because one single animation
+   moves both lists together, they can never drift apart.
+
+   Speed: seconds per loop. Set it in index.html with data-ticker-motion="50"
+   (js/ticker.js copies it into --t-duration); 50s is used if JavaScript is off. */
 .testimonials__track {
   display: flex;
   width: max-content;
+  animation: testimonials-ticker var(--t-duration, 50s) linear infinite;
 }
 
-/* Both copies of the list move left by exactly their own width, then start again.
-   Because the second copy sits right behind the first, the restart is invisible and
-   the loop never stops. (Measuring each list by its own width works the same in
-   every browser, unlike moving the whole track by half of its width.) */
-.testimonials__list {
-  animation: testimonials-ticker 50s linear infinite; /* fallback without JavaScript; the speed is set in index.html (data-ticker-motion) */
-}
-
-.testimonials__ticker:hover .testimonials__list,
-.testimonials__ticker.is-paused .testimonials__list {
+/* Pause / play button */
+.testimonials__ticker.is-paused .testimonials__track {
   animation-play-state: paused;
 }
 
-/* With JavaScript, js/ticker.js moves the whole track as one piece instead
-   (seconds per loop in data-ticker-motion), so the CSS animation is switched off. */
-.testimonials__ticker.is-js .testimonials__list {
-  animation: none;
-}
-
-.testimonials__ticker.is-js .testimonials__track {
-  will-change: transform;
+/* Pause while a mouse hovers the cards. Limited to real mouse/trackpad devices,
+   so a tap on iPhone/iPad never leaves the ticker stuck paused. */
+@media (hover: hover) and (pointer: fine) {
+  .testimonials__ticker:hover .testimonials__track {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes testimonials-ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 .testimonials__list {
@@ -178,6 +177,7 @@
 
   .testimonials__track {
     width: auto;
+    animation: none;
   }
 
   .testimonials__list {
