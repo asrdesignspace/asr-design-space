@@ -29,6 +29,15 @@
   <link rel="stylesheet" href="../../css/footer.css">
   <link rel="stylesheet" href="../../css/case-study.css">
   <link rel="stylesheet" href="../../css/case-study-reddit.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  <script>
+    /* Entrance animations: keep the main content hidden until js/animations.js
+       is ready (it shows anyway after 3 seconds); skipped for "reduce motion". */
+    if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("js-motion");
+      setTimeout(function () { document.documentElement.classList.add("motion-ready"); }, 3000);
+    }
+  </script>
 </head>
 <body class="cs cs--rdt">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -312,5 +321,6 @@
 
   <script src="../../js/nav.js" defer></script>
   <script src="../../js/footer.js" defer></script>
+  <script src="../../js/animations.js" defer></script>
 </body>
 </html>

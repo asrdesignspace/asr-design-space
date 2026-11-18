@@ -1,0 +1,68 @@
+/* =========================================================
+   Entrance & scroll animations (used on every page)
+   ---------------------------------------------------------
+   js/animations.js picks the blocks to animate and marks them
+   with data-reveal. Each block starts slightly lower and
+   transparent, then rises into place when it scrolls into view.
+   Once it has arrived, the data-reveal mark is removed, so the
+   element goes back to its own styles (hover effects included).
+
+   To tune the feel, change the values in :root below.
+   To keep one element still, add data-reveal="off" to it in the HTML.
+   ========================================================= */
+
+:root {
+  --reveal-distance: 24px;                     /* how far blocks rise */
+  --reveal-duration: 0.7s;                     /* how long one block takes */
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1); /* fast start, soft landing */
+}
+
+/* Until the page is ready, the main content stays invisible so nothing
+   flashes before it animates in (set by the small script in each page's <head>;
+   it shows the page anyway after 3 seconds if anything goes wrong). */
+.js-motion:not(.motion-ready) main {
+  opacity: 0;
+}
+
+/* Starting position (applied instantly, without a transition) */
+.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+}
+
+/* Images and illustrations: a gentle settle instead of a rise */
+.js-motion [data-reveal="media"] {
+  transform: scale(0.97);
+}
+
+/* Elements that already use a transform of their own only fade */
+.js-motion [data-reveal="fade"] {
+  transform: none;
+}
+
+/* Arrived: only this step animates */
+.js-motion [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease) var(--reveal-delay, 0s),
+    transform var(--reveal-duration) var(--reveal-ease) var(--reveal-delay, 0s);
+}
+
+/* "Reduce motion" and printing: everything is simply there */
+@media (prefers-reduced-motion: reduce) {
+  .js-motion main,
+  .js-motion [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .js-motion main,
+  .js-motion [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
